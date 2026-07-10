@@ -1960,6 +1960,26 @@
       });
     }
 
+    function startAdditionalImport() {
+      importState.files.forEach((item) => URL.revokeObjectURL(item.url));
+      Object.assign(importState, {
+        open: true,
+        mode: 'image',
+        step: 'source',
+        text: '',
+        files: [],
+        drafts: [],
+        busy: false,
+        error: '',
+        progress: 0,
+        status: '',
+        session: null,
+        notice: null,
+        lastScanDrafts: [],
+      });
+      render();
+    }
+
     function addImageFiles(fileList) {
       const files = [...fileList].filter((file) => file.type.startsWith('image/'));
       const room = Math.max(0, 12 - importState.files.length);
@@ -2538,7 +2558,7 @@
             ${importState.error ? `<p class="import-error">${esc(importState.error)}</p>` : ''}
           </div>
           <footer class="import-actions">
-            <div>${isAudit ? '<button type="button" class="audit-back">Tilbake</button>' : (isSuccess ? '<button type="button" class="show-scan-audit">Se innlesning</button>' : (isReview ? `<button type="button" class="import-back">Tilbake</button><button type="button" class="add-draft">Legg til rad</button>${importState.lastScanDrafts.length ? '<button type="button" class="show-scan-audit">Se innlesning</button>' : ''}` : '<button type="button" class="import-cancel">Avbryt</button><button type="button" class="manual-import">Registrer manuelt</button>'))}</div>
+            <div>${isAudit ? '<button type="button" class="audit-back">Tilbake</button><button type="button" class="import-more">Importer flere</button>' : (isSuccess ? '<button type="button" class="show-scan-audit">Se innlesning</button><button type="button" class="import-more">Importer flere</button>' : (isReview ? `<button type="button" class="import-back">Tilbake</button><button type="button" class="add-draft">Legg til rad</button>${importState.lastScanDrafts.length ? '<button type="button" class="show-scan-audit">Se innlesning</button>' : ''}` : '<button type="button" class="import-cancel">Avbryt</button><button type="button" class="manual-import">Registrer manuelt</button>'))}</div>
             <div>${isAudit || isSuccess
               ? '<button type="button" class="primary-action import-done">Ferdig</button>'
               : (isReview
@@ -2865,6 +2885,8 @@
         importState.step = 'audit';
         render();
       });
+
+      document.querySelector('.import-more')?.addEventListener('click', startAdditionalImport);
 
       document.querySelector('.audit-back')?.addEventListener('click', () => {
         importState.step = importState.drafts.length ? 'review' : 'success';
