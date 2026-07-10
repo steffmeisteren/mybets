@@ -1,0 +1,2155 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mine spill · Oddsenoversikt</title>
+  <style>
+    :root {
+      --ink: #0b1110;
+      --paper: #fffaf0;
+      --gold: #d8aa49;
+      --green: #10a66f;
+      --blue: #2f72ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      letter-spacing: 0;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--paper);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 112px),
+        linear-gradient(180deg, #070908 0%, #11231b 34%, #0b5038 100%);
+      font-family: Aptos, Candara, "Segoe UI", sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(118deg, transparent 0 16%, rgba(255,255,255,0.16) 16% 17%, transparent 17% 42%, rgba(255,255,255,0.08) 42% 43%, transparent 43%),
+        linear-gradient(242deg, transparent 0 20%, rgba(255,255,255,0.10) 20% 21%, transparent 21% 54%, rgba(255,255,255,0.08) 54% 55%, transparent 55%);
+      mix-blend-mode: screen;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 38px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .hero {
+      min-height: 260px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+      gap: 18px;
+      align-items: end;
+      padding: 28px 0 22px;
+      border-bottom: 1px solid rgba(255,250,240,0.18);
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .kicker::before,
+    .kicker::after {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 660px;
+      color: var(--paper);
+      font-family: Bahnschrift, "Aptos Display", Impact, sans-serif;
+      font-size: 58px;
+      line-height: 0.92;
+      font-weight: 900;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      max-width: 610px;
+      margin: 18px 0 0;
+      color: rgba(255,250,240,0.72);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .import-trigger {
+      min-height: 46px;
+      padding: 0 18px;
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #171109;
+      box-shadow: 0 12px 30px rgba(216,170,73,0.18);
+    }
+
+    .hero-actions > span {
+      color: rgba(255,250,240,0.56);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .scoreboard,
+    .final {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .scoreboard {
+      padding: 12px;
+      border: 1px solid rgba(255,250,240,0.22);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03)), rgba(4,8,7,0.72);
+      box-shadow: 0 22px 70px rgba(0,0,0,0.32);
+    }
+
+    .stat {
+      min-height: 86px;
+      display: grid;
+      align-content: center;
+      gap: 5px;
+      padding: 14px;
+      border: 1px solid rgba(255,250,240,0.16);
+      border-radius: 8px;
+      background: rgba(255,250,240,0.06);
+    }
+
+    .stat span,
+    .stat em {
+      color: rgba(255,250,240,0.62);
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      color: var(--paper);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .green strong { color: #35d992; }
+    .blue strong, .sharp strong { color: #69a1ff; }
+    .bold strong { color: #ffc056; }
+    .moonshot strong { color: #ff7a3d; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 18px 0;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: rgba(255,250,240,0.74);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .legend i {
+      width: 10px;
+      height: 10px;
+      border: 1px solid rgba(255,255,255,0.34);
+      background: var(--cat);
+    }
+
+    .selection {
+      position: sticky;
+      top: 12px;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: minmax(210px, 1fr) repeat(3, minmax(128px, auto)) auto;
+      gap: 10px;
+      align-items: stretch;
+      margin-bottom: 18px;
+      padding: 12px;
+      border: 1px solid rgba(255,250,240,0.22);
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(216,170,73,0.20), rgba(255,250,240,0.05)), rgba(4,8,7,0.88);
+      box-shadow: 0 18px 52px rgba(0,0,0,0.30);
+      backdrop-filter: blur(12px);
+    }
+
+    .selection-copy,
+    .selection-metric {
+      min-height: 70px;
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      padding: 12px;
+      border: 1px solid rgba(255,250,240,0.14);
+      border-radius: 8px;
+      background: rgba(255,250,240,0.06);
+    }
+
+    .selection-copy span,
+    .selection-metric span {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .selection-copy strong,
+    .selection-metric strong {
+      color: var(--paper);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 19px;
+      line-height: 1.05;
+    }
+
+    .selection-copy p {
+      margin: 0;
+      color: rgba(255,250,240,0.68);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .selection-metric.green strong {
+      color: #35d992;
+    }
+
+    .selection button {
+      min-height: 70px;
+      align-self: stretch;
+      border-color: rgba(216,170,73,0.52);
+      background: var(--gold);
+      color: #14100a;
+    }
+
+    .selection button:disabled {
+      cursor: not-allowed;
+      opacity: 0.48;
+    }
+
+    .selection-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .selection-actions button {
+      min-height: 31px;
+    }
+
+    .selection-actions .delete-selected {
+      border-color: rgba(205,73,54,0.55);
+      background: rgba(118,26,20,0.42);
+      color: #ffe9e3;
+    }
+
+    .match {
+      margin-top: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,250,240,0.20);
+      border-radius: 8px;
+      background: #fffaf0;
+      color: var(--ink);
+      box-shadow: 0 26px 70px rgba(0,0,0,0.26);
+    }
+
+    .match-top {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(420px, 0.92fr);
+      gap: 18px;
+      align-items: stretch;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(9,17,15,0.96), rgba(23,33,29,0.92));
+      color: var(--paper);
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .match-title > span {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .match-title h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      font-family: Bahnschrift, "Aptos Display", Impact, sans-serif;
+    }
+
+    .match-title b {
+      min-width: 92px;
+      padding: 8px 10px 7px;
+      border: 1px solid rgba(255,255,255,0.26);
+      border-bottom: 3px solid var(--accent);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.08);
+      color: var(--paper);
+      font-size: 38px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .match-title b:last-of-type {
+      border-bottom-color: var(--rival);
+    }
+
+    .match-title small {
+      color: rgba(255,250,240,0.56);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .match-title p {
+      margin: 12px 0 0;
+      color: rgba(255,250,240,0.72);
+      font-size: 14px;
+    }
+
+    .match-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .delete-match {
+      flex: 0 0 auto;
+      min-height: 36px;
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,250,240,0.78);
+    }
+
+    .delete-match:hover,
+    .delete-match:focus-visible {
+      border-color: #ff8974;
+      background: rgba(157,42,29,0.38);
+      color: #fff;
+    }
+
+    .match-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .match-metrics .stat {
+      min-height: 74px;
+    }
+
+    .match-metrics .stat strong {
+      font-size: 18px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(11,17,16,0.10);
+      background: #f4ecda;
+    }
+
+    .sort {
+      display: grid;
+      grid-template-columns: 46px 72px minmax(220px, 1fr) 96px 112px 136px;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px 14px;
+      border-bottom: 1px solid rgba(11,17,16,0.10);
+      background: #f4ecda;
+    }
+
+    button {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+      border: 1px solid rgba(11,17,16,0.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.56);
+      color: #1b2723;
+      font: 900 12px Aptos, Candara, "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .sort button small {
+      min-height: 20px;
+      display: grid;
+      place-items: center;
+      padding: 0 7px;
+      border-radius: 6px;
+      background: rgba(11,17,16,0.10);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .sort-reset {
+      grid-column: 1 / 4;
+      justify-self: start;
+    }
+
+    .sort-odds {
+      grid-column: 4;
+    }
+
+    .sort-stake {
+      grid-column: 5;
+    }
+
+    .sort-payout {
+      grid-column: 6;
+    }
+
+    .sort-odds,
+    .sort-stake,
+    .sort-payout {
+      width: 100%;
+      justify-content: center;
+      padding: 0 8px;
+    }
+
+    button span {
+      min-width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: rgba(11,17,16,0.10);
+      font-family: "Cascadia Mono", Consolas, monospace;
+    }
+
+    button.is-active {
+      background: var(--filter, var(--accent));
+      border-color: var(--filter, var(--accent));
+      color: white;
+    }
+
+    button.is-active span {
+      background: rgba(255,255,255,0.22);
+    }
+
+    .sort button.is-active small {
+      background: rgba(255,255,255,0.22);
+    }
+
+    .bet {
+      position: relative;
+      display: grid;
+      grid-template-columns: 46px 72px minmax(220px, 1fr) 96px 112px 136px;
+      gap: 12px;
+      align-items: center;
+      min-height: 82px;
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(11,17,16,0.10);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--cat) 9%, transparent), transparent 32%), rgba(255,255,255,0.45);
+    }
+
+    .bet.selected {
+      background: linear-gradient(90deg, rgba(216,170,73,0.25), color-mix(in srgb, var(--cat) 12%, transparent) 38%, transparent), white;
+      box-shadow: inset 0 0 0 2px rgba(216,170,73,0.52);
+    }
+
+    .bet::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: var(--cat);
+    }
+
+    .delete-bet {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      z-index: 1;
+      width: 28px;
+      min-height: 28px;
+      justify-content: center;
+      padding: 0;
+      border-color: rgba(170,47,33,0.22);
+      background: rgba(255,255,255,0.78);
+      color: #a52d22;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .select-bet {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .select-bet input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    .select-bet label {
+      width: 38px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(11,17,16,0.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.62);
+      cursor: pointer;
+    }
+
+    .select-bet input:focus-visible + label {
+      outline: 3px solid rgba(216,170,73,0.48);
+      outline-offset: 2px;
+    }
+
+    .select-bet input:checked + label {
+      border-color: #b88924;
+      background: var(--gold);
+    }
+
+    .check {
+      color: transparent;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .select-bet input:checked + label .check {
+      color: #14100a;
+    }
+
+    .marker {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--cat) 50%, white);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--cat) 13%, white);
+      color: color-mix(in srgb, var(--cat) 86%, #101010);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .main span,
+    .num span {
+      display: block;
+      color: rgba(11,17,16,0.56);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .main strong {
+      display: block;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.22;
+    }
+
+    .num {
+      text-align: right;
+    }
+
+    .num strong {
+      display: block;
+      color: var(--ink);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 15px;
+    }
+
+    .odds strong {
+      font-size: 20px;
+    }
+
+    .bet.sharp .odds strong { color: #1f6fff; }
+    .bet.bold .odds strong { color: #b56c00; }
+    .bet.moonshot .odds strong { color: #c24812; }
+
+    .payout strong {
+      color: #008f60;
+      font-size: 17px;
+    }
+
+    .payout em {
+      display: block;
+      color: #167a56;
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 11px;
+      font-style: normal;
+      margin-top: 3px;
+    }
+
+    .match-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      border-top: 1px solid rgba(11,17,16,0.10);
+      background: #efe5cf;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .match-footer strong {
+      color: #007f56;
+      font-family: "Cascadia Mono", Consolas, monospace;
+    }
+
+    .final {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .final .stat {
+      min-height: 96px;
+      background: rgba(4,8,7,0.66);
+    }
+
+    .empty-dashboard {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      padding: 56px 24px;
+      border: 1px solid rgba(255,250,240,0.20);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(4,8,7,0.82), rgba(17,48,37,0.74));
+      box-shadow: 0 26px 70px rgba(0,0,0,0.24);
+      text-align: center;
+    }
+
+    .empty-dashboard > div {
+      width: min(560px, 100%);
+    }
+
+    .empty-number {
+      display: block;
+      color: var(--gold);
+      font: 900 64px/1 "Cascadia Mono", Consolas, monospace;
+    }
+
+    .empty-dashboard h2 {
+      margin: 12px 0 8px;
+      color: var(--paper);
+      font-family: Bahnschrift, "Aptos Display", Impact, sans-serif;
+      font-size: 34px;
+    }
+
+    .empty-dashboard p {
+      margin: 0 auto 22px;
+      color: rgba(255,250,240,0.68);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .empty-import {
+      min-height: 46px;
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #171109;
+    }
+
+    .import-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(2,6,5,0.78);
+      backdrop-filter: blur(12px);
+    }
+
+    .import-panel {
+      width: min(980px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      border: 1px solid rgba(255,250,240,0.24);
+      border-radius: 8px;
+      background: #fffaf0;
+      color: var(--ink);
+      box-shadow: 0 30px 100px rgba(0,0,0,0.52);
+    }
+
+    .confirm-panel {
+      width: min(460px, 100%);
+      padding: 24px;
+      border: 1px solid rgba(255,250,240,0.24);
+      border-top: 4px solid #d45743;
+      border-radius: 8px;
+      background: #fffaf0;
+      color: var(--ink);
+      box-shadow: 0 30px 100px rgba(0,0,0,0.52);
+    }
+
+    .confirm-panel > span {
+      color: #a83b2d;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .confirm-panel h2 {
+      margin: 7px 0 8px;
+      font-family: Bahnschrift, "Aptos Display", Impact, sans-serif;
+      font-size: 28px;
+    }
+
+    .confirm-panel p {
+      margin: 0;
+      color: rgba(11,17,16,0.68);
+      line-height: 1.5;
+    }
+
+    .confirm-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .confirm-delete {
+      border-color: #a83b2d;
+      background: #b94132;
+      color: #fff;
+    }
+
+    .import-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 4px solid var(--gold);
+      background: #111b17;
+      color: var(--paper);
+    }
+
+    .import-head span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .import-head h2 {
+      margin: 0;
+      font-family: Bahnschrift, "Aptos Display", Impact, sans-serif;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .import-close {
+      width: 40px;
+      min-height: 40px;
+      justify-content: center;
+      padding: 0;
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 24px;
+    }
+
+    .import-body {
+      padding: 20px;
+    }
+
+    .import-modes {
+      display: inline-grid;
+      grid-template-columns: repeat(2, minmax(150px, 1fr));
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid rgba(11,17,16,0.16);
+      border-radius: 8px;
+      background: #eee3cd;
+    }
+
+    .import-modes button {
+      justify-content: center;
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .import-modes button.is-active {
+      border-color: #17221e;
+      background: #17221e;
+      color: white;
+    }
+
+    .import-source {
+      margin-top: 16px;
+    }
+
+    .import-label {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(11,17,16,0.64);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .import-textarea {
+      width: 100%;
+      min-height: 260px;
+      resize: vertical;
+      padding: 16px;
+      border: 1px solid rgba(11,17,16,0.22);
+      border-radius: 8px;
+      background: #fffdf8;
+      color: var(--ink);
+      font: 14px/1.55 "Cascadia Mono", Consolas, monospace;
+    }
+
+    .import-textarea:focus,
+    .review-field input:focus,
+    .review-field select:focus {
+      outline: 3px solid rgba(216,170,73,0.34);
+      border-color: #b88924;
+    }
+
+    .dropzone {
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      border: 2px dashed rgba(11,17,16,0.28);
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(135deg, rgba(216,170,73,0.07) 0 12px, transparent 12px 24px),
+        #fffdf8;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .dropzone.is-dragging {
+      border-color: #b88924;
+      background-color: #fff5d8;
+    }
+
+    .dropzone strong {
+      display: block;
+      font-family: Bahnschrift, "Aptos Display", sans-serif;
+      font-size: 22px;
+    }
+
+    .dropzone span {
+      display: block;
+      margin-top: 7px;
+      color: rgba(11,17,16,0.58);
+      font-size: 13px;
+    }
+
+    .image-queue {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .image-item {
+      position: relative;
+      min-height: 116px;
+      overflow: hidden;
+      border: 1px solid rgba(11,17,16,0.16);
+      border-radius: 8px;
+      background: #e8dfcd;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: 116px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .image-item button {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 30px;
+      min-height: 30px;
+      justify-content: center;
+      padding: 0;
+      background: rgba(10,15,13,0.84);
+      color: white;
+    }
+
+    .ocr-status {
+      display: grid;
+      gap: 7px;
+      margin-top: 14px;
+      color: rgba(11,17,16,0.70);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .ocr-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #e1d6be;
+    }
+
+    .ocr-track i {
+      width: var(--progress, 0%);
+      height: 100%;
+      display: block;
+      background: var(--green);
+      transition: width 180ms ease;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .review-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr 1.15fr 94px 110px 120px;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid rgba(11,17,16,0.16);
+      border-left: 5px solid var(--cat);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+
+    .review-field {
+      min-width: 0;
+    }
+
+    .review-field label {
+      display: block;
+      margin-bottom: 6px;
+      color: rgba(11,17,16,0.56);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .review-field input,
+    .review-field select {
+      width: 100%;
+      min-height: 40px;
+      padding: 0 10px;
+      border: 1px solid rgba(11,17,16,0.18);
+      border-radius: 6px;
+      background: white;
+      color: var(--ink);
+      font: 800 13px Aptos, Candara, "Segoe UI", sans-serif;
+    }
+
+    .remove-draft {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 30px;
+      min-height: 30px;
+      justify-content: center;
+      padding: 0;
+      border-color: #8c2c22;
+      background: #a6382c;
+      color: white;
+      font-size: 18px;
+    }
+
+    .import-empty {
+      padding: 34px;
+      border: 1px dashed rgba(11,17,16,0.24);
+      border-radius: 8px;
+      color: rgba(11,17,16,0.62);
+      text-align: center;
+    }
+
+    .import-actions {
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      border-top: 1px solid rgba(11,17,16,0.14);
+      background: rgba(255,250,240,0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .import-actions > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .primary-action {
+      border-color: #087c54;
+      background: #0b9766;
+      color: white;
+    }
+
+    .danger-action {
+      border-color: rgba(166,56,44,0.28);
+      color: #9b3026;
+    }
+
+    .import-error {
+      margin: 12px 0 0;
+      padding: 11px 12px;
+      border-left: 4px solid #b94031;
+      background: #f9e2dc;
+      color: #762118;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .match-top {
+        grid-template-columns: 1fr;
+      }
+
+      .review-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .selection {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .selection-copy {
+        grid-column: 1 / -1;
+      }
+
+      .match-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .bet {
+        grid-template-columns: 46px 58px minmax(180px, 1fr) 88px 110px;
+      }
+
+      .sort {
+        grid-template-columns: 46px 58px minmax(180px, 1fr) 88px 110px;
+      }
+
+      .sort-reset {
+        grid-column: 1 / 4;
+      }
+
+      .sort-odds {
+        grid-column: 4;
+      }
+
+      .sort-stake {
+        grid-column: 5;
+      }
+
+      .sort-payout {
+        grid-column: 3 / -1;
+        width: auto;
+        justify-self: end;
+      }
+
+      .payout {
+        grid-column: 3 / -1;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 16px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .scoreboard,
+      .final {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+      }
+
+      .import-trigger {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .import-backdrop {
+        padding: 0;
+      }
+
+      .import-panel {
+        width: 100%;
+        max-height: 100vh;
+        min-height: 100vh;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .import-body {
+        padding: 14px;
+      }
+
+      .import-modes {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .review-row {
+        grid-template-columns: 1fr;
+      }
+
+      .import-actions {
+        display: grid;
+        padding: 12px 14px;
+      }
+
+      .import-actions > div,
+      .import-actions button {
+        width: 100%;
+      }
+
+      .import-actions button {
+        justify-content: center;
+      }
+
+      .selection {
+        position: static;
+        grid-template-columns: 1fr;
+      }
+
+      .selection-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .selection button {
+        min-height: 48px;
+      }
+
+      .selection-actions button {
+        min-height: 44px;
+      }
+
+      .match-title-row {
+        align-items: flex-start;
+      }
+
+      .delete-match {
+        width: 40px;
+        min-height: 40px;
+        justify-content: center;
+        padding: 0;
+        font-size: 0;
+      }
+
+      .delete-match::before {
+        content: "×";
+        font-size: 22px;
+      }
+
+      .match-title h2 {
+        flex-wrap: wrap;
+      }
+
+      .match-title b {
+        min-width: 82px;
+        font-size: 30px;
+      }
+
+      .bet {
+        grid-template-columns: 42px 46px minmax(0, 1fr);
+      }
+
+      .sort {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .sort-reset,
+      .sort-odds,
+      .sort-stake,
+      .sort-payout {
+        grid-column: auto;
+        width: 100%;
+        justify-self: stretch;
+      }
+
+      .select-bet label {
+        width: 36px;
+        height: 46px;
+      }
+
+      .marker {
+        width: 46px;
+        height: 46px;
+      }
+
+      .main {
+        grid-column: 3;
+      }
+
+      .num,
+      .payout {
+        grid-column: 3;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: baseline;
+        text-align: left;
+      }
+
+      .num span {
+        margin: 0;
+      }
+
+      .payout em {
+        grid-column: 2;
+      }
+
+      .match-footer {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell" id="app"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script>
+    const CAT = {
+      result: { label: 'Resultat', short: 'RES', color: '#c96a2b' },
+      player: { label: 'Spiller', short: 'SP', color: '#2f72ff' },
+      match: { label: 'Kamp', short: 'KAMP', color: '#12a88f' },
+      stats: { label: 'Statistikk', short: 'STAT', color: '#2fbf71' },
+      timing: { label: 'Timing', short: 'TID', color: '#8d63e6' },
+      special: { label: 'Spesial', short: 'VIP', color: '#d83f7b' },
+    };
+
+    const SORT_OPTIONS = [
+      { key: 'default', label: 'Original' },
+      { key: 'odds', label: 'Odds' },
+      { key: 'stake', label: 'Innsats' },
+      { key: 'payout', label: 'Mulig premie' },
+    ];
+
+    const MATCHES = [];
+    const ALL_BETS = [];
+
+    const STORAGE_KEY = 'oddsen-tracker-workspace-v3';
+    const importState = {
+      open: false,
+      mode: 'text',
+      step: 'source',
+      text: '',
+      files: [],
+      drafts: [],
+      busy: false,
+      error: '',
+      progress: 0,
+      status: '',
+    };
+
+    const confirmState = {
+      open: false,
+      title: '',
+      message: '',
+      ids: [],
+    };
+
+    const esc = (value = '') => String(value)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+
+    const parseNumber = (value) => {
+      let normalized = String(value ?? '').replace(/kr/gi, '').replace(/\s/g, '');
+      if (!normalized) return 0;
+
+      if (normalized.includes(',')) {
+        normalized = normalized.replace(/\./g, '').replace(',', '.');
+      } else {
+        const parts = normalized.split('.');
+        if (parts.length > 2) normalized = `${parts.slice(0, -1).join('')}.${parts.at(-1)}`;
+      }
+
+      const number = Number.parseFloat(normalized.replace(/[^0-9.-]/g, ''));
+      return Number.isFinite(number) ? number : 0;
+    };
+
+    const cleanField = (value = '') => String(value)
+      .replace(/[|]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .replace(/^[\s:.-]+|[\s:.-]+$/g, '')
+      .trim();
+
+    const inferCategory = (market = '') => {
+      const value = market.toLowerCase();
+      if (/korrekt|resultat|halvtid\s*\/\s*fulltid/.test(value)) return 'result';
+      if (/tidspunkt|minutt/.test(value)) return 'timing';
+      if (/begge lag|over|under|antall mål|hub/.test(value)) return 'match';
+      if (/scorer|spiller|assist|heading|frispark|hat.?trick/.test(value)) return 'player';
+      if (/statistikk|kort|corner|takling|skudd/.test(value)) return 'stats';
+      if (/vinner.*vm|mester|turnering|spesial/.test(value)) return 'special';
+      return 'match';
+    };
+
+    const blankDraft = () => ({
+      match: '',
+      market: '',
+      selection: '',
+      odds: '',
+      stake: '',
+      payout: '',
+      category: 'match',
+      coupon: '',
+      kickoff: '',
+    });
+
+    function parseImportText(rawText, source = 'text') {
+      const text = String(rawText || '')
+        .replace(/\r/g, '')
+        .replace(/[‐‑‒–—]/g, '-')
+        .replace(/Mulig\s+Premie/gi, 'Mulig Premie');
+
+      const summaryPattern = /innsats\s*:?\s*([0-9][0-9 .]*(?:,[0-9]{1,2})?)[\s\S]{0,100}?\bOdds\s*:?\s*([0-9]+(?:[.,][0-9]+)?)[\s\S]{0,80}?Mulig\s+Premie\s*:?\s*([0-9][0-9 .]*(?:,[0-9]{1,2})?)/gi;
+      const summaries = [...text.matchAll(summaryPattern)];
+
+      return summaries.map((summary, index) => {
+        const start = summary.index;
+        const end = summaries[index + 1]?.index ?? text.length;
+        const block = text.slice(start, end);
+        const marketMatch = block.match(/Spillobjekt\s*:?\s*([\s\S]*?)(?=\s*Spilt\s+utfall)/i);
+        const selectionMatch = block.match(/Spilt\s+utfall\s*:?\s*([\s\S]*?)(?=\s*(?:Levert|Kupongnummer|$))/i);
+        const matchLine = block.match(/(?:^|\n)\s*\d+\.\s*([^\n]{2,90})/m);
+        const kickoffMatch = block.match(/Starttid\s*:?\s*([\s\S]*?)(?=\s*(?:Konkurranse|Spillobjekt))/i);
+        const couponMatch = block.match(/Kupongnummer\s*:?\s*([0-9.]+)/i);
+
+        let market = cleanField(marketMatch?.[1] || 'Ukjent spilltype');
+        let selection = cleanField(selectionMatch?.[1] || 'Kontroller utfall');
+        const odds = parseNumber(summary[2]);
+        const trailingOdds = new RegExp(`\\s+${String(summary[2]).replace('.', '\\.')}$`);
+        selection = selection.replace(trailingOdds, '').trim();
+        if (/scorer|assist|heading|frispark|spiller/i.test(market)) selection = selection.replace(/\s+Ja$/i, '');
+
+        const match = cleanField(matchLine?.[1] || 'Importert kupong');
+        const stake = parseNumber(summary[1]);
+        const payout = parseNumber(summary[3]) || stake * odds;
+
+        return {
+          match,
+          market,
+          selection,
+          odds: odds || '',
+          stake: stake || '',
+          payout: payout || '',
+          category: inferCategory(market),
+          coupon: couponMatch?.[1] || '',
+          kickoff: cleanField(kickoffMatch?.[1] || ''),
+          source,
+        };
+      });
+    }
+
+    function restoreImports() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        (saved.matches || []).forEach((match) => {
+          if (!MATCHES.some((existing) => existing.id === match.id)) MATCHES.push(match);
+        });
+        (saved.bets || []).forEach((bet) => {
+          if (!ALL_BETS.some((existing) => existing.id === bet.id)) ALL_BETS.push(bet);
+        });
+      } catch (error) {
+        console.warn('Kunne ikke lese lokalt lagrede spill.', error);
+      }
+    }
+
+    restoreImports();
+
+    const filters = Object.fromEntries(MATCHES.map((match) => [match.id, null]));
+    const sortState = { key: 'default', direction: 'desc' };
+    const selectedBetIds = new Set();
+    const money = new Intl.NumberFormat('nb-NO', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    const fmtMoney = (value) => `${money.format(value)} kr`;
+    const fmtOdds = (value) => value.toFixed(2);
+    const net = (bet) => bet.payout - bet.stake;
+    const tier = (odds) => odds >= 25 ? 'moonshot' : odds >= 15 ? 'bold' : odds >= 7 ? 'sharp' : 'steady';
+    const summary = (bets) => bets.reduce((acc, bet) => {
+      acc.stake += bet.stake;
+      acc.payout += bet.payout;
+      acc.bestPayout = Math.max(acc.bestPayout, bet.payout);
+      acc.highestOdds = Math.max(acc.highestOdds, bet.odds);
+      acc.net += net(bet);
+      return acc;
+    }, { stake: 0, payout: 0, bestPayout: 0, highestOdds: 0, net: 0 });
+    const counts = (bets) => bets.reduce((acc, bet) => {
+      acc[bet.category] = (acc[bet.category] || 0) + 1;
+      return acc;
+    }, {});
+    const sortBets = (bets) => {
+      if (sortState.key === 'default') return bets;
+      const direction = sortState.direction === 'asc' ? 1 : -1;
+
+      return [...bets].sort((a, b) => {
+        const diff = (a[sortState.key] - b[sortState.key]) * direction;
+        return diff || ALL_BETS.indexOf(a) - ALL_BETS.indexOf(b);
+      });
+    };
+    const stat = (label, value, tone = '', eyebrow = '') => `<div class="stat ${tone}"><span>${label}</span><strong>${value}</strong>${eyebrow ? `<em>${eyebrow}</em>` : ''}</div>`;
+
+    const slug = (value) => String(value || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 42);
+
+    const teamCode = (team) => {
+      const known = { norge: 'NOR', england: 'ENG', frankrike: 'FRA', marokko: 'MAR', spania: 'ESP', argentina: 'ARG' };
+      const normalized = String(team || '').toLowerCase().trim();
+      return known[normalized] || String(team || 'SP').replace(/[^A-Za-zÆØÅæøå]/g, '').slice(0, 3).toUpperCase() || 'SP';
+    };
+
+    function parseMatchLabel(label) {
+      const cleaned = cleanField(label).replace(/^\d+\.\s*/, '');
+      const parts = cleaned.split(/\s+(?:v|vs\.?|mot)\s+/i);
+      if (parts.length >= 2) return { home: parts[0], away: parts.slice(1).join(' v ') };
+      return { home: cleaned || 'Importert', away: 'Spesial' };
+    }
+
+    function ensureMatch(label, kickoff = '') {
+      const { home, away } = parseMatchLabel(label);
+      const existing = MATCHES.find((match) =>
+        match.home.toLowerCase() === home.toLowerCase() && match.away.toLowerCase() === away.toLowerCase()
+      );
+      if (existing) return existing.id;
+
+      const baseId = slug(`${home}-${away}`) || `importert-${Date.now()}`;
+      let id = baseId;
+      let suffix = 2;
+      while (MATCHES.some((match) => match.id === id)) id = `${baseId}-${suffix++}`;
+
+      MATCHES.push({
+        id,
+        round: 'Importert',
+        home,
+        away,
+        homeCode: teamCode(home),
+        awayCode: teamCode(away),
+        kickoff: kickoff || 'Tidspunkt ikke registrert',
+        venue: 'Mine kuponger',
+        accent: '#d8aa49',
+        rival: '#10a66f',
+        imported: true,
+      });
+      filters[id] = null;
+      return id;
+    }
+
+    function saveImports() {
+      try {
+        const bets = ALL_BETS.filter((bet) => bet.imported);
+        const matchIds = new Set(bets.map((bet) => bet.matchId));
+        const matches = MATCHES.filter((match) => match.imported && matchIds.has(match.id));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ matches, bets }));
+      } catch (error) {
+        console.warn('Kunne ikke lagre importerte spill lokalt.', error);
+      }
+    }
+
+    function resetImportState() {
+      importState.files.forEach((item) => URL.revokeObjectURL(item.url));
+      Object.assign(importState, {
+        open: false,
+        mode: 'text',
+        step: 'source',
+        text: '',
+        files: [],
+        drafts: [],
+        busy: false,
+        error: '',
+        progress: 0,
+        status: '',
+      });
+    }
+
+    function addImageFiles(fileList) {
+      const files = [...fileList].filter((file) => file.type.startsWith('image/'));
+      const room = Math.max(0, 12 - importState.files.length);
+      files.slice(0, room).forEach((file) => {
+        importState.files.push({ file, url: URL.createObjectURL(file) });
+      });
+      importState.error = files.length ? '' : 'Velg bildefiler som PNG, JPG eller WEBP.';
+      render();
+    }
+
+    function updateOcrProgress(progress, status) {
+      importState.progress = Math.max(0, Math.min(1, progress || 0));
+      importState.status = status || 'Leser skjermbilder';
+      const track = document.querySelector('.ocr-track i');
+      const label = document.querySelector('.ocr-status span');
+      if (track) track.style.setProperty('--progress', `${Math.round(importState.progress * 100)}%`);
+      if (label) label.textContent = `${importState.status} · ${Math.round(importState.progress * 100)} %`;
+    }
+
+    async function prepareOcrSlices(file) {
+      const bitmap = await createImageBitmap(file);
+      const ratio = bitmap.width / bitmap.height;
+      const columns = bitmap.width >= 1000 && ratio > 1.05 ? 3 : (bitmap.width >= 720 && ratio > 1.15 ? 2 : 1);
+      const cropWidth = bitmap.width / columns;
+      const scale = Math.min(2.5, Math.max(1, 900 / cropWidth));
+      const slices = [];
+
+      for (let column = 0; column < columns; column += 1) {
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(cropWidth * scale);
+        canvas.height = Math.round(bitmap.height * scale);
+        const context = canvas.getContext('2d', { alpha: false });
+        context.fillStyle = '#ffffff';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = 'high';
+        context.drawImage(
+          bitmap,
+          Math.round(column * cropWidth),
+          0,
+          Math.ceil(cropWidth),
+          bitmap.height,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+        slices.push({ image: canvas.toDataURL('image/png'), column: column + 1, columns });
+      }
+
+      bitmap.close();
+      return slices;
+    }
+
+    async function recognizeImages() {
+      if (!importState.files.length || importState.busy) return;
+      if (!window.Tesseract) {
+        importState.error = 'Bildegjenkjenning krever internettilgang. Du kan fortsatt lime inn kupongteksten.';
+        render();
+        return;
+      }
+
+      importState.busy = true;
+      importState.error = '';
+      importState.status = 'Forbereder bildelesing';
+      importState.progress = 0;
+      render();
+
+      let worker;
+      const recognized = [];
+      const drafts = [];
+
+      try {
+        updateOcrProgress(0, 'Forbereder bildeutsnitt');
+        const jobs = [];
+        for (let fileIndex = 0; fileIndex < importState.files.length; fileIndex += 1) {
+          const slices = await prepareOcrSlices(importState.files[fileIndex].file);
+          slices.forEach((slice) => jobs.push({ ...slice, fileIndex }));
+        }
+
+        worker = await Tesseract.createWorker('nor+eng', 1, {
+          logger: (message) => {
+            const jobShare = 1 / jobs.length;
+            const jobIndex = Math.max(0, recognized.length);
+            const progress = (jobIndex * jobShare) + ((message.progress || 0) * jobShare);
+            updateOcrProgress(progress, message.status === 'recognizing text' ? 'Leser kupongtekst' : 'Laster språkmodell');
+          },
+        });
+
+        for (let index = 0; index < jobs.length; index += 1) {
+          const job = jobs[index];
+          const columnLabel = job.columns > 1 ? `, kolonne ${job.column}` : '';
+          updateOcrProgress(index / jobs.length, `Leser bilde ${job.fileIndex + 1}${columnLabel}`);
+          const result = await worker.recognize(job.image);
+          const text = result.data.text || '';
+          recognized.push(text);
+          drafts.push(...parseImportText(text, 'image'));
+        }
+
+        importState.text = recognized.join('\n\n--- NYTT BILDE ---\n\n');
+        importState.drafts = drafts;
+        importState.step = 'review';
+        importState.error = drafts.length ? '' : 'Ingen komplette spill ble funnet. Legg til en rad og fyll inn feltene manuelt.';
+      } catch (error) {
+        console.error(error);
+        importState.error = 'Bildene kunne ikke leses. Prøv et tydeligere utsnitt, eller lim inn teksten.';
+      } finally {
+        if (worker) await worker.terminate();
+        importState.busy = false;
+        importState.progress = 1;
+        render();
+      }
+    }
+
+    function commitDrafts() {
+      const valid = importState.drafts.filter((draft) =>
+        cleanField(draft.match) && cleanField(draft.market) && cleanField(draft.selection) &&
+        parseNumber(draft.odds) > 1 && parseNumber(draft.stake) > 0
+      );
+
+      if (!valid.length) {
+        importState.error = 'Kontroller kamp, spilltype, utfall, odds og innsats før du importerer.';
+        render();
+        return;
+      }
+
+      const knownCoupons = new Set(ALL_BETS.map((bet) => bet.coupon).filter(Boolean));
+      const fresh = valid.filter((draft) => !draft.coupon || !knownCoupons.has(draft.coupon));
+
+      if (!fresh.length) {
+        importState.error = 'Disse kupongnumrene er allerede importert.';
+        render();
+        return;
+      }
+
+      fresh.forEach((draft, index) => {
+        const odds = parseNumber(draft.odds);
+        const stake = parseNumber(draft.stake);
+        const payout = parseNumber(draft.payout) || odds * stake;
+        ALL_BETS.push({
+          id: `import-${Date.now()}-${index}`,
+          matchId: ensureMatch(draft.match, draft.kickoff),
+          market: cleanField(draft.market),
+          selection: cleanField(draft.selection),
+          odds,
+          stake,
+          payout,
+          category: draft.category === 'match' ? inferCategory(draft.market) : (CAT[draft.category] ? draft.category : inferCategory(draft.market)),
+          coupon: cleanField(draft.coupon),
+          imported: true,
+        });
+      });
+
+      saveImports();
+      resetImportState();
+      render();
+    }
+
+    function removeBets(ids) {
+      const removeIds = new Set(ids);
+      for (let index = ALL_BETS.length - 1; index >= 0; index -= 1) {
+        if (removeIds.has(ALL_BETS[index].id)) ALL_BETS.splice(index, 1);
+      }
+      removeIds.forEach((id) => selectedBetIds.delete(id));
+
+      for (let index = MATCHES.length - 1; index >= 0; index -= 1) {
+        const match = MATCHES[index];
+        if (!ALL_BETS.some((bet) => bet.matchId === match.id)) {
+          MATCHES.splice(index, 1);
+          delete filters[match.id];
+        }
+      }
+
+      saveImports();
+      render();
+    }
+
+    function removeMatch(matchId) {
+      const ids = ALL_BETS.filter((bet) => bet.matchId === matchId).map((bet) => bet.id);
+      removeBets(ids);
+    }
+
+    function renderImportModal() {
+      if (!importState.open) return '';
+      const isReview = importState.step === 'review';
+
+      const source = importState.mode === 'text'
+        ? `<div class="import-source">
+            <label class="import-label" for="import-text">Kupongtekst</label>
+            <textarea class="import-textarea" id="import-text" placeholder="Lim inn én eller flere Oddsen-kvitteringer her">${esc(importState.text)}</textarea>
+          </div>`
+        : `<div class="import-source">
+            <input class="sr-only" id="image-input" type="file" accept="image/*" multiple>
+            <div class="dropzone" tabindex="0" role="button" aria-label="Velg eller lim inn skjermbilder">
+              <div><strong>Slipp skjermbilder her</strong><span>Velg filer eller lim inn med Ctrl+V</span></div>
+            </div>
+            ${importState.files.length ? `<div class="image-queue">${importState.files.map((item, index) => `
+              <div class="image-item"><img src="${item.url}" alt="Skjermbilde ${index + 1}"><button type="button" data-remove-image="${index}" aria-label="Fjern skjermbilde">×</button></div>
+            `).join('')}</div>` : ''}
+            ${importState.busy || importState.status ? `<div class="ocr-status"><span>${esc(importState.status || 'Klar')}</span><div class="ocr-track"><i style="--progress:${Math.round(importState.progress * 100)}%"></i></div></div>` : ''}
+          </div>`;
+
+      const review = `<div class="review-list">
+        ${importState.drafts.length ? importState.drafts.map((draft, index) => `
+          <article class="review-row" style="--cat:${CAT[draft.category]?.color || CAT.match.color}">
+            <button class="remove-draft" type="button" data-remove-draft="${index}" aria-label="Fjern spill">×</button>
+            <div class="review-field"><label for="draft-match-${index}">Kamp</label><input id="draft-match-${index}" data-draft="${index}" data-field="match" value="${esc(draft.match)}"></div>
+            <div class="review-field"><label for="draft-market-${index}">Spilltype</label><input id="draft-market-${index}" data-draft="${index}" data-field="market" value="${esc(draft.market)}"></div>
+            <div class="review-field"><label for="draft-selection-${index}">Utfall</label><input id="draft-selection-${index}" data-draft="${index}" data-field="selection" value="${esc(draft.selection)}"></div>
+            <div class="review-field"><label for="draft-odds-${index}">Odds</label><input id="draft-odds-${index}" inputmode="decimal" data-draft="${index}" data-field="odds" value="${esc(draft.odds)}"></div>
+            <div class="review-field"><label for="draft-stake-${index}">Innsats</label><input id="draft-stake-${index}" inputmode="decimal" data-draft="${index}" data-field="stake" value="${esc(draft.stake)}"></div>
+            <div class="review-field"><label for="draft-payout-${index}">Mulig premie</label><input id="draft-payout-${index}" inputmode="decimal" data-draft="${index}" data-field="payout" value="${esc(draft.payout)}"></div>
+            <div class="review-field"><label for="draft-category-${index}">Kategori</label><select id="draft-category-${index}" data-draft="${index}" data-field="category">${Object.entries(CAT).map(([key, cat]) => `<option value="${key}" ${draft.category === key ? 'selected' : ''}>${cat.label}</option>`).join('')}</select></div>
+          </article>
+        `).join('') : '<div class="import-empty">Ingen spill funnet ennå.</div>'}
+      </div>`;
+
+      return `<div class="import-backdrop" role="dialog" aria-modal="true" aria-labelledby="import-title">
+        <section class="import-panel">
+          <header class="import-head">
+            <div><span>${isReview ? 'Kontroller før lagring' : 'Ny kupongimport'}</span><h2 id="import-title">${isReview ? `${importState.drafts.length} spill funnet` : 'Importer spill'}</h2></div>
+            <button class="import-close" type="button" aria-label="Lukk">×</button>
+          </header>
+          <div class="import-body">
+            ${isReview ? review : `<div class="import-modes" role="tablist">
+              <button type="button" class="${importState.mode === 'text' ? 'is-active' : ''}" data-import-mode="text">Lim inn tekst</button>
+              <button type="button" class="${importState.mode === 'image' ? 'is-active' : ''}" data-import-mode="image">Skjermbilder</button>
+            </div>${source}`}
+            ${importState.error ? `<p class="import-error">${esc(importState.error)}</p>` : ''}
+          </div>
+          <footer class="import-actions">
+            <div>${isReview ? '<button type="button" class="import-back">Tilbake</button><button type="button" class="add-draft">Legg til rad</button>' : '<button type="button" class="import-cancel">Avbryt</button><button type="button" class="manual-import">Registrer manuelt</button>'}</div>
+            <div>${isReview
+              ? `<button type="button" class="primary-action commit-import">Legg til ${importState.drafts.length} spill</button>`
+              : `<button type="button" class="primary-action parse-import" ${importState.busy ? 'disabled' : ''}>${importState.mode === 'image' ? (importState.busy ? 'Leser bilder' : 'Les bilder') : 'Finn spill'}</button>`
+            }</div>
+          </footer>
+        </section>
+      </div>`;
+    }
+
+    function openDeleteConfirmation(title, message, ids) {
+      Object.assign(confirmState, { open: true, title, message, ids: [...ids] });
+      render();
+    }
+
+    function closeDeleteConfirmation() {
+      Object.assign(confirmState, { open: false, title: '', message: '', ids: [] });
+    }
+
+    function renderDeleteConfirmation() {
+      if (!confirmState.open) return '';
+      return `<div class="import-backdrop" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+        <section class="confirm-panel">
+          <span>Permanent sletting</span>
+          <h2 id="confirm-title">${esc(confirmState.title)}</h2>
+          <p>${esc(confirmState.message)}</p>
+          <div class="confirm-actions">
+            <button type="button" class="confirm-cancel">Behold</button>
+            <button type="button" class="confirm-delete">Slett</button>
+          </div>
+        </section>
+      </div>`;
+    }
+
+    function render() {
+      const total = summary(ALL_BETS);
+      const selectedBets = ALL_BETS.filter((bet) => selectedBetIds.has(bet.id));
+      const selectedSummary = summary(selectedBets);
+      const avgOdds = ALL_BETS.length
+        ? ALL_BETS.reduce((acc, bet) => acc + bet.odds, 0) / ALL_BETS.length
+        : 0;
+
+      document.getElementById('app').innerHTML = `
+        <section class="hero">
+          <div>
+            <div class="kicker">Oddsenoversikt</div>
+            <h1>Mine <span>spill</span></h1>
+            <p>Din kampklare oversikt over kuponger, innsats og mulig premie.</p>
+            <div class="hero-actions">
+              <button type="button" class="import-trigger">＋ Importer spill</button>
+              <span>Skjermbilde eller kupongtekst</span>
+            </div>
+          </div>
+          <aside class="scoreboard">
+            ${stat('Aktive spill', ALL_BETS.length, 'blue', 'åpne kuponger')}
+            ${stat('Total innsats', fmtMoney(total.stake))}
+            ${stat('Topp enkeltpremie', fmtMoney(total.bestPayout), 'green')}
+            ${stat('Snittodds', ALL_BETS.length ? fmtOdds(avgOdds) : '—', ALL_BETS.length ? tier(avgOdds) : '')}
+          </aside>
+        </section>
+
+        ${ALL_BETS.length ? `<div class="legend">${Object.entries(CAT).map(([key, cat]) => `<span style="--cat:${cat.color}"><i></i>${cat.label}</span>`).join('')}</div>` : ''}
+
+        ${ALL_BETS.length ? `<section class="selection" aria-live="polite" aria-label="Markerte spill">
+          <div class="selection-copy">
+            <span>Kupongbygger</span>
+            <strong>${selectedBets.length === 0 ? 'Marker spill' : `${selectedBets.length} markert`}</strong>
+            <p>${selectedBets.length === 0 ? 'Velg kuponger i listen for å summere mulig premie.' : 'Mulig gevinst for de markerte kupongene.'}</p>
+          </div>
+          <div class="selection-metric"><span>Innsats</span><strong>${fmtMoney(selectedSummary.stake)}</strong></div>
+          <div class="selection-metric green"><span>Mulig premie</span><strong>${fmtMoney(selectedSummary.payout)}</strong></div>
+          <div class="selection-metric green"><span>Mulig netto</span><strong>+${fmtMoney(selectedSummary.net)}</strong></div>
+          <div class="selection-actions">
+            <button type="button" class="clear-selection" ${selectedBets.length === 0 ? 'disabled' : ''}>Nullstill</button>
+            <button type="button" class="delete-selected" ${selectedBets.length === 0 ? 'disabled' : ''}>Slett markerte</button>
+          </div>
+        </section>` : `<section class="empty-dashboard">
+          <div>
+            <span class="empty-number">00</span>
+            <h2>Ingen kuponger ennå</h2>
+            <p>Importer et skjermbilde, lim inn kupongtekst eller registrer det første spillet manuelt.</p>
+            <button type="button" class="empty-import">Importer første spill</button>
+          </div>
+        </section>`}
+
+        ${MATCHES.map((match) => {
+          const bets = ALL_BETS.filter((bet) => bet.matchId === match.id);
+          const visible = sortBets(filters[match.id] ? bets.filter((bet) => bet.category === filters[match.id]) : bets);
+          const matchSummary = summary(bets);
+          const matchCounts = counts(bets);
+
+          return `
+            <section class="match" style="--accent:${match.accent};--rival:${match.rival}">
+              <header class="match-top">
+                <div class="match-title">
+                  <span>${esc(match.round)} · ${esc(match.venue)}</span>
+                  <div class="match-title-row">
+                    <h2><b>${esc(match.homeCode)}</b><small>vs</small><b>${esc(match.awayCode)}</b></h2>
+                    <button type="button" class="delete-match" data-delete-match="${esc(match.id)}" aria-label="Slett hele kampen ${esc(match.home)} mot ${esc(match.away)}">Slett kamp</button>
+                  </div>
+                  <p>${esc(match.home)} mot ${esc(match.away)} · ${esc(match.kickoff)}</p>
+                </div>
+                <div class="match-metrics">
+                  ${stat('Spill', bets.length, 'blue')}
+                  ${stat('Satset', fmtMoney(matchSummary.stake))}
+                  ${stat('Topp odds', fmtOdds(matchSummary.highestOdds), tier(matchSummary.highestOdds))}
+                  ${stat('Størst premie', fmtMoney(matchSummary.bestPayout), 'green')}
+                </div>
+              </header>
+              <div class="filters">
+                <button class="${!filters[match.id] ? 'is-active' : ''}" aria-pressed="${!filters[match.id]}" data-match="${match.id}" data-filter="">Alle <span>${bets.length}</span></button>
+                ${Object.keys(matchCounts).map((key) => {
+                  const cat = CAT[key];
+                  return `<button class="${filters[match.id] === key ? 'is-active' : ''}" aria-pressed="${filters[match.id] === key}" style="--filter:${cat.color}" data-match="${match.id}" data-filter="${key}">${cat.label} <span>${matchCounts[key]}</span></button>`;
+                }).join('')}
+              </div>
+              <div class="sort" aria-label="Sorter spill">
+                ${SORT_OPTIONS.map((option) => {
+                  const active = sortState.key === option.key;
+                  const suffix = active && option.key !== 'default'
+                    ? (sortState.direction === 'desc' ? 'høy-lav' : 'lav-høy')
+                    : '';
+                  const className = [
+                    active ? 'is-active' : '',
+                    option.key === 'default' ? 'sort-reset' : '',
+                    option.key === 'odds' ? 'sort-odds' : '',
+                    option.key === 'stake' ? 'sort-stake' : '',
+                    option.key === 'payout' ? 'sort-payout' : '',
+                  ].filter(Boolean).join(' ');
+
+                  return `<button class="${className}" aria-pressed="${active}" data-sort="${option.key}">${option.label}${suffix ? ` <small>${suffix}</small>` : ''}</button>`;
+                }).join('')}
+              </div>
+              <div>
+                ${visible.map((bet) => {
+                  const cat = CAT[bet.category] || CAT.match;
+                  return `
+                    <article class="bet ${tier(bet.odds)} ${selectedBetIds.has(bet.id) ? 'selected' : ''}" style="--cat:${cat.color}">
+                      <button type="button" class="delete-bet" data-delete-bet="${esc(bet.id)}" aria-label="Slett ${esc(bet.market)}: ${esc(bet.selection)}" title="Slett kupong">×</button>
+                      <div class="select-bet">
+                        <input id="bet-${esc(bet.id)}" type="checkbox" data-bet="${esc(bet.id)}" ${selectedBetIds.has(bet.id) ? 'checked' : ''}>
+                        <label for="bet-${esc(bet.id)}">
+                          <span class="check" aria-hidden="true">✓</span>
+                          <span class="sr-only">Marker ${esc(bet.market)}: ${esc(bet.selection)}</span>
+                        </label>
+                      </div>
+                      <div class="marker">${cat.short}</div>
+                      <div class="main"><span>${esc(bet.market)}</span><strong>${esc(bet.selection)}</strong></div>
+                      <div class="num odds"><span>Odds</span><strong>${fmtOdds(bet.odds)}</strong></div>
+                      <div class="num"><span>Innsats</span><strong>${fmtMoney(bet.stake)}</strong></div>
+                      <div class="num payout"><span>Mulig premie</span><strong>${fmtMoney(bet.payout)}</strong><em>+${fmtMoney(net(bet))} netto</em></div>
+                    </article>
+                  `;
+                }).join('')}
+              </div>
+              <footer class="match-footer">
+                <span>${visible.length} av ${bets.length} kuponger · Status aktiv</span>
+                <strong>Total mulig utbetaling ${fmtMoney(matchSummary.payout)}</strong>
+              </footer>
+            </section>
+          `;
+        }).join('')}
+
+        ${ALL_BETS.length ? `<section class="final">
+          ${stat('Total innsats', fmtMoney(total.stake), '', `${ALL_BETS.length} kuponger`)}
+          ${stat('Maks total utbetaling', fmtMoney(total.payout), 'green', 'hvis alle spill vinner')}
+          ${stat('Mulig netto', `+${fmtMoney(total.net)}`, 'green', 'samlet oppside')}
+        </section>` : ''}
+
+        ${renderImportModal()}
+        ${renderDeleteConfirmation()}
+      `;
+
+      document.querySelectorAll('.import-trigger, .empty-import').forEach((button) => {
+        button.addEventListener('click', () => {
+          importState.open = true;
+          importState.error = '';
+          render();
+        });
+      });
+
+      document.querySelectorAll('.import-close, .import-cancel').forEach((button) => {
+        button.addEventListener('click', () => {
+          resetImportState();
+          render();
+        });
+      });
+
+      document.querySelectorAll('[data-import-mode]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const textarea = document.querySelector('#import-text');
+          if (textarea) importState.text = textarea.value;
+          importState.mode = button.dataset.importMode;
+          importState.error = '';
+          render();
+        });
+      });
+
+      const dropzone = document.querySelector('.dropzone');
+      const imageInput = document.querySelector('#image-input');
+      dropzone?.addEventListener('click', () => imageInput?.click());
+      dropzone?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') imageInput?.click();
+      });
+      dropzone?.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropzone.classList.add('is-dragging');
+      });
+      dropzone?.addEventListener('dragleave', () => dropzone.classList.remove('is-dragging'));
+      dropzone?.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropzone.classList.remove('is-dragging');
+        addImageFiles(event.dataTransfer.files);
+      });
+      imageInput?.addEventListener('change', () => addImageFiles(imageInput.files));
+
+      document.querySelectorAll('[data-remove-image]').forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const index = Number(button.dataset.removeImage);
+          const [removed] = importState.files.splice(index, 1);
+          if (removed) URL.revokeObjectURL(removed.url);
+          render();
+        });
+      });
+
+      document.querySelector('.parse-import')?.addEventListener('click', () => {
+        if (importState.mode === 'image') {
+          recognizeImages();
+          return;
+        }
+
+        importState.text = document.querySelector('#import-text')?.value || '';
+        importState.drafts = parseImportText(importState.text, 'text');
+        if (!importState.drafts.length) {
+          importState.error = 'Fant ingen komplette spill. Kontroller at teksten inneholder innsats, odds og mulig premie.';
+        } else {
+          importState.step = 'review';
+          importState.error = '';
+        }
+        render();
+      });
+
+      document.querySelector('.import-back')?.addEventListener('click', () => {
+        importState.step = 'source';
+        importState.error = '';
+        render();
+      });
+
+      document.querySelector('.manual-import')?.addEventListener('click', () => {
+        importState.drafts = [blankDraft()];
+        importState.step = 'review';
+        importState.error = '';
+        render();
+      });
+
+      document.querySelector('.add-draft')?.addEventListener('click', () => {
+        importState.drafts.push(blankDraft());
+        importState.error = '';
+        render();
+      });
+
+      document.querySelectorAll('[data-draft][data-field]').forEach((field) => {
+        field.addEventListener('input', () => {
+          const draft = importState.drafts[Number(field.dataset.draft)];
+          if (draft) draft[field.dataset.field] = field.value;
+        });
+        field.addEventListener('change', () => {
+          const draft = importState.drafts[Number(field.dataset.draft)];
+          if (draft) draft[field.dataset.field] = field.value;
+        });
+      });
+
+      document.querySelectorAll('[data-remove-draft]').forEach((button) => {
+        button.addEventListener('click', () => {
+          importState.drafts.splice(Number(button.dataset.removeDraft), 1);
+          render();
+        });
+      });
+
+      document.querySelector('.commit-import')?.addEventListener('click', commitDrafts);
+
+      document.querySelectorAll('[data-delete-bet]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const bet = ALL_BETS.find((item) => item.id === button.dataset.deleteBet);
+          if (bet) openDeleteConfirmation('Slett kupong?', `${bet.market}: ${bet.selection} fjernes fra oversikten.`, [bet.id]);
+        });
+      });
+
+      document.querySelectorAll('[data-delete-match]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const match = MATCHES.find((item) => item.id === button.dataset.deleteMatch);
+          const ids = ALL_BETS.filter((bet) => bet.matchId === button.dataset.deleteMatch).map((bet) => bet.id);
+          if (match) openDeleteConfirmation('Slett hele kampen?', `${match.home} mot ${match.away} og alle ${ids.length} kupongene fjernes.`, ids);
+        });
+      });
+
+      document.querySelectorAll('button[data-match]').forEach((button) => {
+        button.addEventListener('click', () => {
+          filters[button.dataset.match] = button.dataset.filter || null;
+          render();
+        });
+      });
+
+      document.querySelectorAll('input[data-bet]').forEach((input) => {
+        input.addEventListener('change', () => {
+          if (selectedBetIds.has(input.dataset.bet)) {
+            selectedBetIds.delete(input.dataset.bet);
+          } else {
+            selectedBetIds.add(input.dataset.bet);
+          }
+
+          render();
+        });
+      });
+
+      document.querySelectorAll('button[data-sort]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const key = button.dataset.sort;
+
+          if (key === 'default') {
+            sortState.key = 'default';
+            sortState.direction = 'desc';
+          } else {
+            sortState.direction = sortState.key === key && sortState.direction === 'desc' ? 'asc' : 'desc';
+            sortState.key = key;
+          }
+
+          render();
+        });
+      });
+
+      document.querySelector('.clear-selection')?.addEventListener('click', () => {
+        selectedBetIds.clear();
+        render();
+      });
+
+      document.querySelector('.delete-selected')?.addEventListener('click', () => {
+        const ids = [...selectedBetIds];
+        if (ids.length) openDeleteConfirmation('Slett markerte kuponger?', `${ids.length} markerte kuponger fjernes fra oversikten.`, ids);
+      });
+
+      document.querySelector('.confirm-cancel')?.addEventListener('click', () => {
+        closeDeleteConfirmation();
+        render();
+      });
+
+      document.querySelector('.confirm-delete')?.addEventListener('click', () => {
+        const ids = [...confirmState.ids];
+        closeDeleteConfirmation();
+        removeBets(ids);
+      });
+    }
+
+    render();
+
+    document.addEventListener('paste', (event) => {
+      if (!importState.open || importState.mode !== 'image' || importState.step !== 'source') return;
+      const files = [...(event.clipboardData?.items || [])]
+        .filter((item) => item.kind === 'file' && item.type.startsWith('image/'))
+        .map((item) => item.getAsFile())
+        .filter(Boolean);
+      if (files.length) {
+        event.preventDefault();
+        addImageFiles(files);
+      }
+    });
+
+    window.__oddsenImport = { parseImportText, parseNumber, inferCategory };
+  </script>
+</body>
+</html>
