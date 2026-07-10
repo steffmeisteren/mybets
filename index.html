@@ -26,7 +26,7 @@
         linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
         repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 112px),
         linear-gradient(180deg, #070908 0%, #11231b 34%, #0b5038 100%);
-      font-family: Aptos, Candara, "Segoe UI", sans-serif;
+      font-family: "Segoe UI Variable Text", "Segoe UI", Arial, sans-serif;
     }
 
     body::before {
@@ -61,12 +61,12 @@
     }
 
     .hero {
-      min-height: 260px;
+      min-height: 224px;
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
       gap: 18px;
       align-items: end;
-      padding: 28px 0 22px;
+      padding: 20px 0 18px;
       border-bottom: 1px solid rgba(255,250,240,0.18);
     }
 
@@ -106,9 +106,9 @@
     .hero p {
       max-width: 610px;
       margin: 18px 0 0;
-      color: rgba(255,250,240,0.72);
+      color: #d2cec4;
       font-size: 16px;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .hero-actions {
@@ -129,21 +129,21 @@
     }
 
     .hero-actions > span {
-      color: rgba(255,250,240,0.56);
+      color: #d4d0c7;
       font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
+      font-weight: 700;
+      text-transform: none;
     }
 
     .scoreboard,
     .final {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
     }
 
     .scoreboard {
-      padding: 12px;
+      padding: 8px;
       border: 1px solid rgba(255,250,240,0.22);
       border-radius: 8px;
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03)), rgba(4,8,7,0.72);
@@ -151,11 +151,11 @@
     }
 
     .stat {
-      min-height: 86px;
+      min-height: 64px;
       display: grid;
       align-content: center;
-      gap: 5px;
-      padding: 14px;
+      gap: 4px;
+      padding: 10px 12px;
       border: 1px solid rgba(255,250,240,0.16);
       border-radius: 8px;
       background: rgba(255,250,240,0.06);
@@ -163,17 +163,18 @@
 
     .stat span,
     .stat em {
-      color: rgba(255,250,240,0.62);
+      color: #f7f3ea;
       font-size: 11px;
       font-style: normal;
-      font-weight: 800;
-      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.25;
+      text-transform: none;
     }
 
     .stat strong {
-      color: var(--paper);
+      color: #fffdf8;
       font-family: "Cascadia Mono", Consolas, monospace;
-      font-size: 24px;
+      font-size: 21px;
       line-height: 1;
     }
 
@@ -193,10 +194,10 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      color: rgba(255,250,240,0.74);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
+      color: #e1ddd4;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: none;
     }
 
     .legend i {
@@ -225,11 +226,11 @@
 
     .selection-copy,
     .selection-metric {
-      min-height: 70px;
+      min-height: 58px;
       display: grid;
       align-content: center;
-      gap: 4px;
-      padding: 12px;
+      gap: 3px;
+      padding: 9px 11px;
       border: 1px solid rgba(255,250,240,0.14);
       border-radius: 8px;
       background: rgba(255,250,240,0.06);
@@ -237,24 +238,24 @@
 
     .selection-copy span,
     .selection-metric span {
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
+      color: #f4c85a;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: none;
     }
 
     .selection-copy strong,
     .selection-metric strong {
-      color: var(--paper);
+      color: #fffdf8;
       font-family: "Cascadia Mono", Consolas, monospace;
-      font-size: 19px;
+      font-size: 17px;
       line-height: 1.05;
     }
 
     .selection-copy p {
       margin: 0;
       color: rgba(255,250,240,0.68);
-      font-size: 13px;
+      font-size: 11px;
       line-height: 1.35;
     }
 
@@ -263,7 +264,7 @@
     }
 
     .selection button {
-      min-height: 70px;
+      min-height: 58px;
       align-self: stretch;
       border-color: rgba(216,170,73,0.52);
       background: var(--gold);
@@ -304,9 +305,9 @@
     .match-top {
       display: grid;
       grid-template-columns: minmax(280px, 1fr) minmax(420px, 0.92fr);
-      gap: 18px;
-      align-items: stretch;
-      padding: 18px;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 16px;
       background: linear-gradient(135deg, rgba(9,17,15,0.96), rgba(23,33,29,0.92));
       color: var(--paper);
       border-bottom: 4px solid var(--accent);
@@ -347,15 +348,15 @@
     }
 
     .match-title small {
-      color: rgba(255,250,240,0.56);
+      color: #d5d1c8;
       font-size: 15px;
       font-weight: 900;
     }
 
     .match-title p {
       margin: 12px 0 0;
-      color: rgba(255,250,240,0.72);
-      font-size: 14px;
+      color: #d2cec4;
+      font-size: 13px;
     }
 
     .match-title-row {
@@ -380,35 +381,65 @@
       color: #fff;
     }
 
+    .special-event-title {
+      display: grid;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .special-event-title strong {
+      color: var(--paper);
+      font-family: Bahnschrift, "Segoe UI Variable Display", "Segoe UI", sans-serif;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1;
+      overflow-wrap: anywhere;
+    }
+
+    .special-event-title small {
+      color: #d2cec4;
+      font-family: "Segoe UI Variable Text", "Segoe UI", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
     .match-metrics {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
+      gap: 7px;
     }
 
     .match-metrics .stat {
-      min-height: 74px;
+      min-height: 58px;
+      padding: 9px 10px;
+    }
+
+    .match-metrics .stat span,
+    .match-metrics .stat em {
+      color: #f7f3ea;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: none;
     }
 
     .match-metrics .stat strong {
-      font-size: 18px;
+      font-size: 15px;
     }
 
     .filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      padding: 14px 18px;
+      gap: 7px;
+      padding: 10px 14px;
       border-bottom: 1px solid rgba(11,17,16,0.10);
       background: #f4ecda;
     }
 
     .sort {
       display: grid;
-      grid-template-columns: 46px 46px 72px minmax(220px, 1fr) 96px 112px 136px;
+      grid-template-columns: 18px 22px 40px minmax(220px, 1fr) 76px 88px 112px 22px;
       align-items: center;
-      gap: 8px;
-      padding: 10px 18px 14px;
+      gap: 6px;
+      padding: 7px 12px 9px;
       border-bottom: 1px solid rgba(11,17,16,0.10);
       background: #f4ecda;
     }
@@ -423,7 +454,7 @@
       border-radius: 8px;
       background: rgba(255,255,255,0.56);
       color: #1b2723;
-      font: 900 12px Aptos, Candara, "Segoe UI", sans-serif;
+      font: 800 12px "Segoe UI Variable Text", "Segoe UI", Arial, sans-serif;
       cursor: pointer;
     }
 
@@ -440,8 +471,7 @@
     }
 
     .sort-reset {
-      grid-column: 1 / 5;
-      justify-self: start;
+      grid-column: 4;
     }
 
     .sort-odds {
@@ -462,6 +492,14 @@
       width: 100%;
       justify-content: center;
       padding: 0 8px;
+    }
+
+    .sort-reset {
+      width: auto;
+      min-width: 92px;
+      justify-self: end;
+      justify-content: center;
+      padding: 0 14px;
     }
 
     button span {
@@ -491,11 +529,11 @@
     .bet {
       position: relative;
       display: grid;
-      grid-template-columns: 46px 46px 72px minmax(220px, 1fr) 96px 112px 136px;
-      gap: 12px;
+      grid-template-columns: 18px 22px 40px minmax(220px, 1fr) 76px 88px 112px 22px;
+      gap: 6px;
       align-items: center;
-      min-height: 82px;
-      padding: 12px 18px;
+      min-height: 40px;
+      padding: 2px 10px;
       border-bottom: 1px solid rgba(11,17,16,0.10);
       background: linear-gradient(90deg, color-mix(in srgb, var(--cat) 9%, transparent), transparent 32%), rgba(255,255,255,0.45);
     }
@@ -514,18 +552,17 @@
     }
 
     .delete-bet {
-      position: absolute;
-      top: 7px;
-      right: 7px;
-      z-index: 1;
-      width: 28px;
-      min-height: 28px;
+      position: static;
+      grid-column: 8;
+      justify-self: end;
+      width: 20px;
+      min-height: 20px;
       justify-content: center;
       padding: 0;
       border-color: rgba(170,47,33,0.22);
       background: rgba(255,255,255,0.78);
       color: #a52d22;
-      font-size: 18px;
+      font-size: 14px;
       line-height: 1;
     }
 
@@ -543,8 +580,8 @@
     }
 
     .select-bet label {
-      width: 38px;
-      height: 52px;
+      width: 16px;
+      height: 18px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(11,17,16,0.18);
@@ -565,7 +602,7 @@
 
     .check {
       color: transparent;
-      font-size: 22px;
+      font-size: 13px;
       font-weight: 900;
       line-height: 1;
     }
@@ -575,8 +612,8 @@
     }
 
     .marker {
-      width: 52px;
-      height: 52px;
+      width: 28px;
+      height: 28px;
       display: grid;
       place-items: center;
       border: 1px solid color-mix(in srgb, var(--cat) 50%, white);
@@ -584,26 +621,38 @@
       background: color-mix(in srgb, var(--cat) 13%, white);
       color: color-mix(in srgb, var(--cat) 86%, #101010);
       font-family: "Cascadia Mono", Consolas, monospace;
-      font-size: 12px;
+      font-size: 9px;
       font-weight: 900;
     }
 
-    .main span,
-    .num span {
+    .main span {
       display: block;
-      color: rgba(11,17,16,0.56);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 6px;
+      color: #5b625f;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1.05;
+      text-transform: none;
+      margin-bottom: 1px;
+    }
+
+
+    .num > span {
+      display: block;
+      color: #626965;
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: none;
+      margin-bottom: 1px;
     }
 
     .main strong {
       display: block;
       overflow-wrap: anywhere;
-      color: var(--ink);
-      font-size: 17px;
-      line-height: 1.22;
+      color: #101513;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.05;
     }
 
     .num {
@@ -614,11 +663,12 @@
       display: block;
       color: var(--ink);
       font-family: "Cascadia Mono", Consolas, monospace;
-      font-size: 15px;
+      font-size: 14px;
+      line-height: 1;
     }
 
     .odds strong {
-      font-size: 20px;
+      font-size: 16px;
     }
 
     .bet.sharp .odds strong { color: #1f6fff; }
@@ -627,16 +677,17 @@
 
     .payout strong {
       color: #008f60;
-      font-size: 17px;
+      font-size: 15px;
     }
 
     .payout em {
       display: block;
       color: #167a56;
       font-family: "Cascadia Mono", Consolas, monospace;
-      font-size: 11px;
+      font-size: 8px;
+      line-height: 1;
       font-style: normal;
-      margin-top: 3px;
+      margin-top: 1px;
     }
 
     .match-footer {
@@ -856,7 +907,7 @@
 
     .import-textarea {
       width: 100%;
-      min-height: 260px;
+      min-height: 224px;
       resize: vertical;
       padding: 16px;
       border: 1px solid rgba(11,17,16,0.22);
@@ -1237,29 +1288,42 @@
 
     .bet-header {
       display: grid;
-      grid-template-columns: 46px 46px 72px minmax(220px, 1fr) 96px 112px 136px;
-      gap: 12px;
-      padding: 9px 18px;
-      border-bottom: 1px solid rgba(11,17,16,0.10);
-      background: #e9dec7;
-      color: rgba(11,17,16,0.58);
-      font-size: 10px;
-      font-weight: 900;
-      text-transform: uppercase;
+      grid-template-columns: 18px 22px 40px minmax(220px, 1fr) 76px 88px 112px 22px;
+      gap: 6px;
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(11,17,16,0.14);
+      background: #e6dac0;
+      color: #343a37;
+      font-size: 11px;
+      letter-spacing: 0.01em;
+      font-weight: 800;
+      text-transform: none;
+    }
+
+    .bet-header span:nth-child(1),
+    .bet-header span:nth-child(2),
+    .bet-header span:nth-child(3) {
+      text-align: center;
+    }
+
+    .bet-header span:nth-child(5),
+    .bet-header span:nth-child(6),
+    .bet-header span:nth-child(7) {
+      text-align: right;
     }
 
     .drag-handle {
-      width: 38px;
-      height: 52px;
+      width: 12px;
+      height: 18px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(11,17,16,0.18);
-      border-radius: 8px;
-      background: rgba(255,255,255,0.62);
-      color: rgba(11,17,16,0.55);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.48);
+      color: rgba(11,17,16,0.52);
       cursor: grab;
       user-select: none;
-      font-size: 20px;
+      font-size: 9px;
       line-height: 1;
     }
 
@@ -1287,8 +1351,16 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .bet-header { grid-template-columns: 46px 46px 58px minmax(180px, 1fr) 88px 110px; }
-      .bet-header span:last-child { grid-column: 3 / -1; text-align: right; }
+      .bet-header { grid-template-columns: 18px 24px 44px minmax(180px, 1fr) 78px 96px; }
+      .bet-header span:nth-child(7) { grid-column: 3 / -1; text-align: right; }
+      .bet-header span:last-child { display: none; }
+
+      .delete-bet {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        grid-column: auto;
+      }
 
       .review-row.has-source {
         grid-template-columns: 150px repeat(2, minmax(0, 1fr));
@@ -1311,15 +1383,15 @@
       }
 
       .bet {
-        grid-template-columns: 46px 46px 58px minmax(180px, 1fr) 88px 110px;
+        grid-template-columns: 18px 24px 44px minmax(180px, 1fr) 78px 96px;
       }
 
       .sort {
-        grid-template-columns: 46px 46px 58px minmax(180px, 1fr) 88px 110px;
+        grid-template-columns: 18px 24px 44px minmax(180px, 1fr) 78px 96px;
       }
 
       .sort-reset {
-        grid-column: 1 / 4;
+        grid-column: 3;
       }
 
       .sort-odds {
@@ -1331,9 +1403,9 @@
       }
 
       .sort-payout {
-        grid-column: 3 / -1;
-        width: auto;
-        justify-self: end;
+        grid-column: 6;
+        width: 100%;
+        justify-self: stretch;
       }
 
       .payout {
@@ -1489,13 +1561,13 @@
       }
 
       .select-bet label {
-        width: 36px;
-        height: 46px;
+        width: 30px;
+        height: 34px;
       }
 
       .marker {
-        width: 46px;
-        height: 46px;
+        width: 38px;
+        height: 38px;
       }
 
       .main {
@@ -1511,7 +1583,8 @@
         text-align: left;
       }
 
-      .num span {
+      .num > span {
+        display: block;
         margin: 0;
       }
 
@@ -1710,7 +1783,18 @@
     function restoreImports() {
       try {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-        (saved.matches || []).forEach((match) => {
+        (saved.matches || []).forEach((savedMatch) => {
+          const match = { ...savedMatch };
+          const legacySpecial = normalizeIdentityText(match.away) === 'spesial' ||
+            (!match.away && /(?:vm|em|turnering|mester|toppscorer|golden boot)/i.test(match.home || ''));
+          if (legacySpecial) {
+            match.kind = 'special';
+            match.away = '';
+            match.awayCode = '';
+            match.homeCode = '';
+          } else {
+            match.kind = match.kind || 'match';
+          }
           if (!MATCHES.some((existing) => existing.id === match.id)) MATCHES.push(match);
         });
         (saved.bets || []).forEach((bet) => {
@@ -1772,39 +1856,70 @@
     function parseMatchLabel(label) {
       const cleaned = cleanField(label).replace(/^\d+\.\s*/, '');
       const parts = cleaned.split(/\s+(?:v|vs\.?|mot)\s+/i);
-      if (parts.length >= 2) return { home: parts[0], away: parts.slice(1).join(' v ') };
-      return { home: cleaned || 'Importert', away: 'Spesial' };
+      if (parts.length >= 2) {
+        return {
+          kind: 'match',
+          home: parts[0],
+          away: parts.slice(1).join(' v '),
+        };
+      }
+
+      return {
+        kind: 'special',
+        home: cleaned || 'Turneringsspill',
+        away: '',
+      };
     }
 
+    const isSpecialMatch = (match) => match?.kind === 'special' || normalizeIdentityText(match?.away) === 'spesial';
+
     function ensureMatch(label, kickoff = '') {
-      const { home, away } = parseMatchLabel(label);
-      const incomingTeams = [normalizeIdentityText(home), normalizeIdentityText(away)].sort().join('|');
+      const parsed = parseMatchLabel(label);
+      const { kind, home, away } = parsed;
       const incomingKickoff = normalizeKickoff(kickoff);
+      const incomingTeams = kind === 'match'
+        ? [normalizeIdentityText(home), normalizeIdentityText(away)].sort().join('|')
+        : '';
+      const incomingEvent = kind === 'special' ? normalizeIdentityText(home) : '';
 
       const existing = MATCHES.find((match) => {
-        const existingTeams = [normalizeIdentityText(match.home), normalizeIdentityText(match.away)].sort().join('|');
-        if (!incomingTeams || existingTeams !== incomingTeams) return false;
+        const existingKind = isSpecialMatch(match) ? 'special' : 'match';
+        if (existingKind !== kind) return false;
+
+        const sameIdentity = kind === 'special'
+          ? normalizeIdentityText(match.home) === incomingEvent
+          : [normalizeIdentityText(match.home), normalizeIdentityText(match.away)].sort().join('|') === incomingTeams;
+        if (!sameIdentity) return false;
+
         const existingKickoff = normalizeKickoff(match.kickoff);
         return !incomingKickoff || !existingKickoff || incomingKickoff === existingKickoff;
       });
 
       if (existing) {
+        existing.kind = kind;
+        if (kind === 'special') {
+          existing.away = '';
+          existing.homeCode = '';
+          existing.awayCode = '';
+        }
         if ((!existing.kickoff || existing.kickoff === 'Tidspunkt ikke registrert') && kickoff) existing.kickoff = kickoff;
         return existing.id;
       }
 
-      const baseId = slug(`${home}-${away}-${incomingKickoff}`) || `importert-${Date.now()}`;
+      const identity = kind === 'special' ? `${home}-special-${incomingKickoff}` : `${home}-${away}-${incomingKickoff}`;
+      const baseId = slug(identity) || `importert-${Date.now()}`;
       let id = baseId;
       let suffix = 2;
       while (MATCHES.some((match) => match.id === id)) id = `${baseId}-${suffix++}`;
 
       MATCHES.push({
         id,
-        round: 'Importert',
+        kind,
+        round: kind === 'special' ? 'Turneringsspill' : 'Importert',
         home,
         away,
-        homeCode: teamCode(home),
-        awayCode: teamCode(away),
+        homeCode: kind === 'match' ? teamCode(home) : '',
+        awayCode: kind === 'match' ? teamCode(away) : '',
         kickoff: kickoff || 'Tidspunkt ikke registrert',
         venue: 'Mine kuponger',
         accent: '#d8aa49',
@@ -2479,9 +2594,9 @@
             </div>
           </div>
           <aside class="scoreboard">
-            ${stat('Aktive spill', ALL_BETS.length, 'blue', 'åpne kuponger')}
+            ${stat('Aktive kuponger', ALL_BETS.length, 'blue')}
             ${stat('Total innsats', fmtMoney(total.stake))}
-            ${stat('Topp enkeltpremie', fmtMoney(total.bestPayout), 'green')}
+            ${stat('Største enkeltpremie', fmtMoney(total.bestPayout), 'green')}
             ${stat('Snittodds', ALL_BETS.length ? fmtOdds(avgOdds) : '—', ALL_BETS.length ? tier(avgOdds) : '')}
           </aside>
         </section>
@@ -2520,18 +2635,20 @@
             <section class="match" style="--accent:${match.accent};--rival:${match.rival}">
               <header class="match-top">
                 <div class="match-title">
-                  <span>${esc(match.round)} · ${esc(match.venue)}</span>
+                  <span>${isSpecialMatch(match) ? 'Turneringsspill' : 'Kamp'}</span>
                   <div class="match-title-row">
-                    <h2><b>${esc(match.homeCode)}</b><small>vs</small><b>${esc(match.awayCode)}</b></h2>
-                    <button type="button" class="delete-match" data-delete-match="${esc(match.id)}" aria-label="Slett hele kampen ${esc(match.home)} mot ${esc(match.away)}">Slett kamp</button>
+                    ${isSpecialMatch(match)
+                      ? `<div class="special-event-title"><strong>${esc(match.home)}</strong><small>Langtidsspill / spesialspill</small></div>`
+                      : `<h2><b>${esc(match.homeCode)}</b><small>vs</small><b>${esc(match.awayCode)}</b></h2>`}
+                    <button type="button" class="delete-match" data-delete-match="${esc(match.id)}" aria-label="${isSpecialMatch(match) ? `Slett ${esc(match.home)}` : `Slett hele kampen ${esc(match.home)} mot ${esc(match.away)}`}">${isSpecialMatch(match) ? 'Slett gruppe' : 'Slett kamp'}</button>
                   </div>
-                  <p>${esc(match.home)} mot ${esc(match.away)} · ${esc(match.kickoff)}</p>
+                  <p>${isSpecialMatch(match) ? `${esc(match.kickoff)}` : `${esc(match.home)} mot ${esc(match.away)} · ${esc(match.kickoff)}`}</p>
                 </div>
                 <div class="match-metrics">
-                  ${stat('Spill', bets.length, 'blue')}
+                  ${stat('Kuponger', bets.length, 'blue')}
                   ${stat('Satset', fmtMoney(matchSummary.stake))}
                   ${stat('Topp odds', fmtOdds(matchSummary.highestOdds), tier(matchSummary.highestOdds))}
-                  ${stat('Størst premie', fmtMoney(matchSummary.bestPayout), 'green')}
+                  ${stat('Største enkeltpremie', fmtMoney(matchSummary.bestPayout), 'green')}
                 </div>
               </header>
               <div class="filters">
@@ -2558,14 +2675,14 @@
                   return `<button class="${className}" aria-pressed="${active}" data-sort="${option.key}">${option.label}${suffix ? ` <small>${suffix}</small>` : ''}</button>`;
                 }).join('')}
               </div>
-              <div class="bet-header" aria-hidden="true"><span>Flytt</span><span>Velg</span><span>Type</span><span>Spill</span><span>Odds</span><span>Innsats</span><span>Mulig premie</span></div>
+              <div class="bet-header" aria-hidden="true"><span title="Flytt">↕</span><span title="Velg">✓</span><span>Type</span><span>Spill</span><span>Odds</span><span>Innsats</span><span>Mulig premie</span><span aria-hidden="true"></span></div>
               <div>
                 ${visible.map((bet) => {
                   const cat = CAT[bet.category] || CAT.match;
                   return `
                     <article class="bet ${tier(bet.odds)} ${selectedBetIds.has(bet.id) ? 'selected' : ''}" style="--cat:${cat.color}" draggable="true" data-drag-bet="${esc(bet.id)}" data-drag-match="${esc(match.id)}">
                       <button type="button" class="delete-bet" data-delete-bet="${esc(bet.id)}" aria-label="Slett ${esc(bet.market)}: ${esc(bet.selection)}" title="Slett kupong">×</button>
-                      <div class="drag-handle" title="Dra for å endre rekkefølge" aria-label="Dra for å endre rekkefølge">⋮⋮</div>
+                      <div class="drag-handle" title="Dra for å endre rekkefølge" aria-label="Dra for å endre rekkefølge">⋮</div>
                       <div class="select-bet">
                         <input id="bet-${esc(bet.id)}" type="checkbox" data-bet="${esc(bet.id)}" ${selectedBetIds.has(bet.id) ? 'checked' : ''}>
                         <label for="bet-${esc(bet.id)}">
