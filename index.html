@@ -405,7 +405,7 @@
 
     .sort {
       display: grid;
-      grid-template-columns: 46px 72px minmax(220px, 1fr) 96px 112px 136px;
+      grid-template-columns: 46px 46px 72px minmax(220px, 1fr) 96px 112px 136px;
       align-items: center;
       gap: 8px;
       padding: 10px 18px 14px;
@@ -440,20 +440,20 @@
     }
 
     .sort-reset {
-      grid-column: 1 / 4;
+      grid-column: 1 / 5;
       justify-self: start;
     }
 
     .sort-odds {
-      grid-column: 4;
-    }
-
-    .sort-stake {
       grid-column: 5;
     }
 
-    .sort-payout {
+    .sort-stake {
       grid-column: 6;
+    }
+
+    .sort-payout {
+      grid-column: 7;
     }
 
     .sort-odds,
@@ -491,7 +491,7 @@
     .bet {
       position: relative;
       display: grid;
-      grid-template-columns: 46px 72px minmax(220px, 1fr) 96px 112px 136px;
+      grid-template-columns: 46px 46px 72px minmax(220px, 1fr) 96px 112px 136px;
       gap: 12px;
       align-items: center;
       min-height: 82px;
@@ -981,6 +981,116 @@
       background: #fffdf8;
     }
 
+    .review-row.has-source {
+      grid-template-columns: 180px repeat(3, minmax(0, 1fr));
+    }
+
+    .review-row.is-uncertain {
+      border-left-color: #d28a25;
+      background: #fff8e7;
+    }
+
+    .review-row.is-rejected {
+      border-left-color: #b94132;
+      background: #fff0ec;
+    }
+
+    .review-source {
+      grid-row: span 3;
+      min-width: 0;
+    }
+
+    .review-source img {
+      width: 100%;
+      max-height: 300px;
+      display: block;
+      object-fit: contain;
+      object-position: top;
+      border: 1px solid rgba(11,17,16,0.16);
+      border-radius: 6px;
+      background: #eee7da;
+    }
+
+    .review-source small {
+      display: block;
+      margin-top: 7px;
+      color: rgba(11,17,16,0.58);
+      font: 10px/1.45 "Cascadia Mono", Consolas, monospace;
+    }
+
+    .review-summary {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding-right: 30px;
+    }
+
+    .review-summary strong,
+    .review-summary span {
+      padding: 5px 8px;
+      border-radius: 5px;
+      background: rgba(11,17,16,0.08);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .review-summary .complete { color: #087c54; }
+    .review-summary .uncertain { color: #a05f00; }
+    .review-summary .rejected { color: #a6382c; }
+
+    .review-approve {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .review-messages {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 10px 12px;
+      border-left: 3px solid #d28a25;
+      background: rgba(210,138,37,0.10);
+      color: #75470a;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .import-diagnostics {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .import-diagnostics div {
+      padding: 10px;
+      border: 1px solid rgba(11,17,16,0.14);
+      border-radius: 6px;
+      background: #f4ecda;
+    }
+
+    .import-diagnostics span,
+    .import-diagnostics strong {
+      display: block;
+    }
+
+    .import-diagnostics span {
+      color: rgba(11,17,16,0.58);
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .import-diagnostics strong {
+      margin-top: 4px;
+      font: 900 20px/1 "Cascadia Mono", Consolas, monospace;
+    }
+
     .review-field {
       min-width: 0;
     }
@@ -1058,6 +1168,105 @@
       color: #9b3026;
     }
 
+
+
+    .import-notice {
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      border-left: 4px solid #0b9766;
+      border-radius: 6px;
+      background: #dff5ea;
+      color: #075f43;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .import-notice::before {
+      content: "✓";
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: #0b9766;
+      color: white;
+    }
+
+    .scan-audit {
+      display: grid;
+      gap: 10px;
+    }
+
+    .scan-audit-row {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid rgba(11,17,16,0.16);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+
+    .scan-audit-row img {
+      width: 100%;
+      max-height: 230px;
+      object-fit: contain;
+      object-position: top;
+      border: 1px solid rgba(11,17,16,0.14);
+      border-radius: 6px;
+      background: #eee7da;
+    }
+
+    .scan-audit-data {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .scan-audit-data div {
+      padding: 9px 10px;
+      border-radius: 6px;
+      background: #f4ecda;
+    }
+
+    .scan-audit-data span,
+    .scan-audit-data strong { display: block; }
+    .scan-audit-data span { color: rgba(11,17,16,.56); font-size: 9px; font-weight: 900; text-transform: uppercase; }
+    .scan-audit-data strong { margin-top: 3px; font-size: 13px; overflow-wrap: anywhere; }
+
+    .bet-header {
+      display: grid;
+      grid-template-columns: 46px 46px 72px minmax(220px, 1fr) 96px 112px 136px;
+      gap: 12px;
+      padding: 9px 18px;
+      border-bottom: 1px solid rgba(11,17,16,0.10);
+      background: #e9dec7;
+      color: rgba(11,17,16,0.58);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .drag-handle {
+      width: 38px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(11,17,16,0.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.62);
+      color: rgba(11,17,16,0.55);
+      cursor: grab;
+      user-select: none;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .drag-handle:active { cursor: grabbing; }
+    .bet.is-dragging { opacity: .45; }
+    .bet.drag-over { box-shadow: inset 0 3px 0 var(--gold); }
+
     .import-error {
       margin: 12px 0 0;
       padding: 11px 12px;
@@ -1078,6 +1287,17 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
+      .bet-header { grid-template-columns: 46px 46px 58px minmax(180px, 1fr) 88px 110px; }
+      .bet-header span:last-child { grid-column: 3 / -1; text-align: right; }
+
+      .review-row.has-source {
+        grid-template-columns: 150px repeat(2, minmax(0, 1fr));
+      }
+
+      .import-diagnostics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
       .selection {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1091,11 +1311,11 @@
       }
 
       .bet {
-        grid-template-columns: 46px 58px minmax(180px, 1fr) 88px 110px;
+        grid-template-columns: 46px 46px 58px minmax(180px, 1fr) 88px 110px;
       }
 
       .sort {
-        grid-template-columns: 46px 58px minmax(180px, 1fr) 88px 110px;
+        grid-template-columns: 46px 46px 58px minmax(180px, 1fr) 88px 110px;
       }
 
       .sort-reset {
@@ -1174,6 +1394,26 @@
         grid-template-columns: 1fr;
       }
 
+      .scan-audit-row { grid-template-columns: 1fr; }
+      .scan-audit-data { grid-template-columns: 1fr; }
+      .bet-header { display: none; }
+
+      .review-row.has-source {
+        grid-template-columns: 1fr;
+      }
+
+      .review-source {
+        grid-row: auto;
+      }
+
+      .review-source img {
+        max-height: 240px;
+      }
+
+      .import-diagnostics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .import-actions {
         display: grid;
         padding: 12px 14px;
@@ -1232,7 +1472,7 @@
       }
 
       .bet {
-        grid-template-columns: 42px 46px minmax(0, 1fr);
+        grid-template-columns: 42px 42px 46px minmax(0, 1fr);
       }
 
       .sort {
@@ -1259,12 +1499,12 @@
       }
 
       .main {
-        grid-column: 3;
+        grid-column: 4;
       }
 
       .num,
       .payout {
-        grid-column: 3;
+        grid-column: 4;
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: baseline;
@@ -1312,7 +1552,7 @@
     const STORAGE_KEY = 'oddsen-tracker-workspace-v3';
     const importState = {
       open: false,
-      mode: 'text',
+      mode: 'image',
       step: 'source',
       text: '',
       files: [],
@@ -1321,6 +1561,9 @@
       error: '',
       progress: 0,
       status: '',
+      session: null,
+      notice: null,
+      lastScanDrafts: [],
     };
 
     const confirmState = {
@@ -1357,6 +1600,24 @@
       .replace(/\s+/g, ' ')
       .replace(/^[\s:.-]+|[\s:.-]+$/g, '')
       .trim();
+
+
+    const normalizeIdentityText = (value = '') => cleanField(value)
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\b(?:fk|fc|cf|afc)\b/g, '')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const normalizeKickoff = (value = '') => normalizeIdentityText(value)
+      .replace(/\b(?:man|tir|ons|tor|fre|lor|son)(?:dag)?\b/g, '')
+      .replace(/\bkl\b/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const isPlaceholder = (value = '') => /^(?:Importert kupong|Ukjent spilltype|Spilltype ikke oppgitt|Kontroller utfall)$/i.test(cleanField(value));
 
     const inferCategory = (market = '') => {
       const value = market.toLowerCase();
@@ -1410,6 +1671,25 @@
         const match = cleanField(matchLine?.[1] || 'Importert kupong');
         const stake = parseNumber(summary[1]);
         const payout = parseNumber(summary[3]) || stake * odds;
+        const markers = [...block.matchAll(/(?:^|\n)\s*\d+\.\s*([^\n]{2,90})/gm)];
+        const selections = markers.length > 1 ? markers.map((marker, markerIndex) => {
+          const section = block.slice(marker.index, markers[markerIndex + 1]?.index ?? block.length);
+          const sectionMarket = cleanField(section.match(/Spillobjekt\s*:?\s*([\s\S]*?)(?=\s*Spilt\s+utfall)/i)?.[1] || 'Ukjent spilltype');
+          const sectionSelectionMatch = section.match(/Spilt\s+utfall\s*:?\s*([\s\S]*?)(?=\s*(?:Levert|Kupongnummer|\n\s*\d+\.|$))/i);
+          const sectionKickoff = cleanField(section.match(/Starttid\s*:?\s*([\s\S]*?)(?=\s*(?:Konkurranse|Spillobjekt))/i)?.[1] || '');
+          let sectionSelection = cleanField(sectionSelectionMatch?.[1] || 'Kontroller utfall');
+          const sectionOddsMatch = sectionSelection.match(/\s+([0-9]+(?:[.,][0-9]+)?)$/);
+          const sectionOdds = parseNumber(sectionOddsMatch?.[1]);
+          if (sectionOddsMatch) sectionSelection = sectionSelection.slice(0, sectionOddsMatch.index).trim();
+          return {
+            match: cleanField(marker[1]),
+            market: sectionMarket,
+            selection: sectionSelection,
+            odds: sectionOdds || '',
+            kickoff: sectionKickoff,
+            category: inferCategory(sectionMarket),
+          };
+        }) : [{ match, market, selection, odds, kickoff: cleanField(kickoffMatch?.[1] || ''), category: inferCategory(market) }];
 
         return {
           match,
@@ -1422,6 +1702,7 @@
           coupon: couponMatch?.[1] || '',
           kickoff: cleanField(kickoffMatch?.[1] || ''),
           source,
+          selections,
         };
       });
     }
@@ -1444,6 +1725,7 @@
 
     const filters = Object.fromEntries(MATCHES.map((match) => [match.id, null]));
     const sortState = { key: 'default', direction: 'desc' };
+    let draggedBetId = null;
     const selectedBetIds = new Set();
     const money = new Intl.NumberFormat('nb-NO', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
     const fmtMoney = (value) => `${money.format(value)} kr`;
@@ -1496,12 +1778,22 @@
 
     function ensureMatch(label, kickoff = '') {
       const { home, away } = parseMatchLabel(label);
-      const existing = MATCHES.find((match) =>
-        match.home.toLowerCase() === home.toLowerCase() && match.away.toLowerCase() === away.toLowerCase()
-      );
-      if (existing) return existing.id;
+      const incomingTeams = [normalizeIdentityText(home), normalizeIdentityText(away)].sort().join('|');
+      const incomingKickoff = normalizeKickoff(kickoff);
 
-      const baseId = slug(`${home}-${away}`) || `importert-${Date.now()}`;
+      const existing = MATCHES.find((match) => {
+        const existingTeams = [normalizeIdentityText(match.home), normalizeIdentityText(match.away)].sort().join('|');
+        if (!incomingTeams || existingTeams !== incomingTeams) return false;
+        const existingKickoff = normalizeKickoff(match.kickoff);
+        return !incomingKickoff || !existingKickoff || incomingKickoff === existingKickoff;
+      });
+
+      if (existing) {
+        if ((!existing.kickoff || existing.kickoff === 'Tidspunkt ikke registrert') && kickoff) existing.kickoff = kickoff;
+        return existing.id;
+      }
+
+      const baseId = slug(`${home}-${away}-${incomingKickoff}`) || `importert-${Date.now()}`;
       let id = baseId;
       let suffix = 2;
       while (MATCHES.some((match) => match.id === id)) id = `${baseId}-${suffix++}`;
@@ -1538,7 +1830,7 @@
       importState.files.forEach((item) => URL.revokeObjectURL(item.url));
       Object.assign(importState, {
         open: false,
-        mode: 'text',
+        mode: 'image',
         step: 'source',
         text: '',
         files: [],
@@ -1547,6 +1839,9 @@
         error: '',
         progress: 0,
         status: '',
+        session: null,
+        notice: null,
+        lastScanDrafts: [],
       });
     }
 
@@ -1569,39 +1864,304 @@
       if (label) label.textContent = `${importState.status} · ${Math.round(importState.progress * 100)} %`;
     }
 
-    async function prepareOcrSlices(file) {
-      const bitmap = await createImageBitmap(file);
-      const ratio = bitmap.width / bitmap.height;
-      const columns = bitmap.width >= 1000 && ratio > 1.05 ? 3 : (bitmap.width >= 720 && ratio > 1.15 ? 2 : 1);
-      const cropWidth = bitmap.width / columns;
-      const scale = Math.min(2.5, Math.max(1, 900 / cropWidth));
-      const slices = [];
+    async function sha256(file) {
+      const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+      return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+    }
 
-      for (let column = 0; column < columns; column += 1) {
-        const canvas = document.createElement('canvas');
-        canvas.width = Math.round(cropWidth * scale);
-        canvas.height = Math.round(bitmap.height * scale);
-        const context = canvas.getContext('2d', { alpha: false });
-        context.fillStyle = '#ffffff';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-        context.imageSmoothingEnabled = true;
-        context.imageSmoothingQuality = 'high';
-        context.drawImage(
-          bitmap,
-          Math.round(column * cropWidth),
-          0,
-          Math.ceil(cropWidth),
-          bitmap.height,
-          0,
-          0,
-          canvas.width,
-          canvas.height
-        );
-        slices.push({ image: canvas.toDataURL('image/png'), column: column + 1, columns });
+    const brightness = (data, width, x, y) => {
+      const offset = ((y * width) + x) * 4;
+      return (data[offset] + data[offset + 1] + data[offset + 2]) / 3;
+    };
+
+    function findRuns(values, predicate, minimumLength = 1) {
+      const runs = [];
+      let start = null;
+      values.forEach((value, index) => {
+        if (predicate(value) && start === null) start = index;
+        if (start !== null && (!predicate(value) || index === values.length - 1)) {
+          const end = predicate(value) && index === values.length - 1 ? index + 1 : index;
+          if (end - start >= minimumLength) runs.push({ start, end });
+          start = null;
+        }
+      });
+      return runs;
+    }
+
+    function mergeRuns(runs, maximumGap) {
+      return runs.reduce((merged, run) => {
+        const previous = merged.at(-1);
+        if (previous && run.start - previous.end <= maximumGap) previous.end = run.end;
+        else merged.push({ ...run });
+        return merged;
+      }, []);
+    }
+
+    function detectColumns(imageData) {
+      const { width, height, data } = imageData;
+      const yStart = Math.max(0, Math.floor(height * 0.065));
+      const yEnd = Math.min(height, Math.ceil(height * 0.94));
+      const yStep = Math.max(1, Math.floor((yEnd - yStart) / 900));
+      const gutterScores = [];
+
+      for (let x = 0; x < width; x += 1) {
+        let bright = 0;
+        let samples = 0;
+        for (let y = yStart; y < yEnd; y += yStep) {
+          if (brightness(data, width, x, y) > 251) bright += 1;
+          samples += 1;
+        }
+        gutterScores.push(bright / Math.max(1, samples));
       }
 
+      const gutterRuns = findRuns(gutterScores, (score) => score < 0.07, Math.max(6, Math.round(width * 0.006)));
+      const boundaries = [0, ...gutterRuns.map((run) => Math.round((run.start + run.end) / 2)), width]
+        .filter((value, index, list) => index === 0 || value - list[index - 1] > width * 0.12);
+      if (boundaries.at(-1) !== width) boundaries.push(width);
+
+      const columns = [];
+      for (let index = 0; index < boundaries.length - 1; index += 1) {
+        const x = boundaries[index];
+        const next = boundaries[index + 1];
+        if (next - x >= width * 0.18) columns.push({ x, width: next - x });
+      }
+      return columns.length ? columns : [{ x: 0, width }];
+    }
+
+    function detectRowsForColumn(imageData, column) {
+      const { width, height, data } = imageData;
+      const xStart = Math.max(0, column.x + Math.max(5, Math.floor(column.width * 0.025)));
+      const xEnd = Math.min(width, column.x + column.width - Math.max(5, Math.floor(column.width * 0.025)));
+      const yStart = Math.max(0, Math.floor(height * 0.06));
+      const yEnd = Math.min(height, Math.ceil(height * 0.95));
+      const sampleCount = 31;
+      const medians = [];
+
+      for (let y = yStart; y < yEnd; y += 1) {
+        const samples = [];
+        for (let sample = 0; sample < sampleCount; sample += 1) {
+          const x = Math.round(xStart + ((xEnd - xStart - 1) * sample / (sampleCount - 1)));
+          samples.push(brightness(data, width, x, y));
+        }
+        samples.sort((a, b) => a - b);
+        medians.push(samples[Math.floor(samples.length / 2)]);
+      }
+
+      const rawRuns = findRuns(medians, (value) => value > 251, 2)
+        .map((run) => ({ start: run.start + yStart, end: run.end + yStart }));
+      const merged = mergeRuns(rawRuns, Math.max(8, Math.round(height * 0.004)));
+      return merged.filter((run) => run.end - run.start >= Math.max(80, height * 0.075));
+    }
+
+    async function ingestAndSegment(file, fileIndex) {
+      const bitmap = await createImageBitmap(file);
+      const canvas = document.createElement('canvas');
+      canvas.width = bitmap.width;
+      canvas.height = bitmap.height;
+      const context = canvas.getContext('2d', { alpha: false, willReadFrequently: true });
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(bitmap, 0, 0);
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const hash = await sha256(file);
+      const sourceImage = {
+        id: `image-${fileIndex}-${hash.slice(0, 12)}`,
+        name: file.name || `skjermbilde-${fileIndex + 1}`,
+        mimeType: file.type || 'image/unknown',
+        size: file.size,
+        sha256: hash,
+        width: bitmap.width,
+        height: bitmap.height,
+      };
+
+      const columns = detectColumns(imageData);
+      const boxes = columns.flatMap((column) => detectRowsForColumn(imageData, column).map((row) => {
+        const padding = Math.max(6, Math.round(bitmap.width * 0.006));
+        const x = Math.max(0, column.x + padding);
+        const y = Math.max(0, row.start - padding);
+        const right = Math.min(bitmap.width, column.x + column.width - padding);
+        const bottom = Math.min(bitmap.height, row.end + padding);
+        return { x, y, width: right - x, height: bottom - y };
+      }));
+
+      boxes.sort((a, b) => a.x - b.x || a.y - b.y);
+      const regions = boxes.map((box, regionIndex) => {
+        const scale = Math.min(3, Math.max(1, 980 / box.width));
+        const crop = document.createElement('canvas');
+        crop.width = Math.round(box.width * scale);
+        crop.height = Math.round(box.height * scale);
+        const cropContext = crop.getContext('2d', { alpha: false });
+        cropContext.fillStyle = '#ffffff';
+        cropContext.fillRect(0, 0, crop.width, crop.height);
+        cropContext.imageSmoothingEnabled = true;
+        cropContext.imageSmoothingQuality = 'high';
+        cropContext.drawImage(bitmap, box.x, box.y, box.width, box.height, 0, 0, crop.width, crop.height);
+        return {
+          id: `${sourceImage.id}-region-${regionIndex + 1}`,
+          sourceImageId: sourceImage.id,
+          box,
+          previewUrl: crop.toDataURL('image/jpeg', 0.92),
+          ocrImage: crop.toDataURL('image/png'),
+          touchesImageEdge: box.x <= 1 || box.y <= 1 || box.x + box.width >= bitmap.width - 1 || box.y + box.height >= bitmap.height - 1,
+          column: columns.findIndex((column) => box.x >= column.x && box.x < column.x + column.width) + 1,
+        };
+      });
+
       bitmap.close();
-      return slices;
+      return { sourceImage, regions, columnCount: columns.length };
+    }
+
+    const tracedField = (rawValue, normalizedValue, confidence, sourceRegion, messages = []) => ({
+      rawValue: String(rawValue ?? ''),
+      normalizedValue: normalizedValue ?? null,
+      confidence,
+      status: normalizedValue === null || normalizedValue === '' ? 'missing' : (messages.length ? 'uncertain' : 'confirmed'),
+      sourceRegion: sourceRegion || null,
+      validationMessages: [...messages],
+    });
+
+    function validateImageDraft(draft) {
+      const blockingErrors = [];
+      const warnings = [];
+
+      const match = cleanField(draft.match);
+      const market = cleanField(draft.market);
+      const selection = cleanField(draft.selection);
+      const coupon = cleanField(draft.coupon);
+      const kickoff = cleanField(draft.kickoff);
+
+      if (!match || isPlaceholder(match)) blockingErrors.push('Kamp mangler eller kunne ikke identifiseres.');
+      if (!selection || isPlaceholder(selection)) blockingErrors.push('Spilt utfall mangler.');
+      if (!market || isPlaceholder(market)) {
+        draft.market = 'Spilltype ikke oppgitt';
+        draft.category = 'match';
+        warnings.push('Spilltype mangler, men kupongen kan importeres med generisk spilltype.');
+      }
+      if (!coupon) warnings.push('Kupongnummer mangler; duplikatkontroll blir mindre presis.');
+      if (!kickoff) warnings.push('Kampstart mangler; kampen kobles primært etter lagene.');
+
+      const odds = parseNumber(draft.odds);
+      const stake = parseNumber(draft.stake);
+      const payout = parseNumber(draft.payout);
+      if (!(odds > 1)) blockingErrors.push('Odds mangler eller er ugyldig.');
+      if (!(stake > 0)) blockingErrors.push('Innsats mangler eller er ugyldig.');
+      if (!(payout > 0)) warnings.push('Mulig premie mangler og beregnes fra innsats × odds.');
+      if (odds > 1 && stake > 0 && payout > 0) {
+        const expected = odds * stake;
+        const tolerance = Math.max(1, payout * 0.02);
+        if (Math.abs(expected - payout) > tolerance) {
+          blockingErrors.push(`Økonomiavvik: ${fmtMoney(stake)} × ${fmtOdds(odds)} er ${fmtMoney(expected)}, ikke ${fmtMoney(payout)}.`);
+        }
+      }
+      if (draft.region?.touchesImageEdge) warnings.push('Kupongregionen berører bildekanten.');
+
+      draft.blockingErrors = blockingErrors;
+      draft.warnings = warnings;
+      draft.validationMessages = [...blockingErrors, ...warnings];
+      draft.status = blockingErrors.length ? 'uncertain' : 'complete';
+      draft.approved = blockingErrors.length === 0;
+      return draft;
+    }
+
+    function reconcileDraftContexts(drafts) {
+      const knownByKickoff = new Map();
+      const allKnownMatches = new Set();
+
+      drafts.forEach((draft) => {
+        const match = cleanField(draft.match);
+        if (!match || isPlaceholder(match)) return;
+        allKnownMatches.add(match);
+        const key = normalizeKickoff(draft.kickoff);
+        if (!key) return;
+        if (!knownByKickoff.has(key)) knownByKickoff.set(key, new Set());
+        knownByKickoff.get(key).add(match);
+      });
+
+      drafts.forEach((draft) => {
+        const missingMatch = !cleanField(draft.match) || isPlaceholder(draft.match);
+        if (missingMatch) {
+          const key = normalizeKickoff(draft.kickoff);
+          const candidates = key ? [...(knownByKickoff.get(key) || [])] : [];
+          if (candidates.length === 1) {
+            draft.match = candidates[0];
+            draft.contextInferred = true;
+          } else if (!key && allKnownMatches.size === 1) {
+            draft.match = [...allKnownMatches][0];
+            draft.contextInferred = true;
+          }
+        }
+        validateImageDraft(draft);
+        if (draft.contextInferred) draft.warnings.unshift('Kampen ble koblet automatisk fra lag og kampstart i de øvrige kupongene.');
+        draft.validationMessages = [...draft.blockingErrors, ...draft.warnings];
+      });
+      return drafts;
+    }
+
+    function importDraftCollection(drafts) {
+      const knownCoupons = new Set(ALL_BETS.map((bet) => bet.coupon).filter(Boolean));
+      const fresh = drafts.filter((draft) => !draft.coupon || !knownCoupons.has(cleanField(draft.coupon)));
+
+      fresh.forEach((draft, index) => {
+        const odds = parseNumber(draft.odds);
+        const stake = parseNumber(draft.stake);
+        const payout = parseNumber(draft.payout) || odds * stake;
+        const market = cleanField(draft.market) || 'Spilltype ikke oppgitt';
+        ALL_BETS.push({
+          id: `import-${Date.now()}-${index}-${Math.random().toString(36).slice(2, 7)}`,
+          matchId: ensureMatch(draft.match, draft.kickoff),
+          market,
+          selection: cleanField(draft.selection),
+          odds,
+          stake,
+          payout,
+          category: CAT[draft.category] ? draft.category : inferCategory(market),
+          coupon: cleanField(draft.coupon),
+          imported: true,
+        });
+      });
+
+      if (fresh.length) saveImports();
+      return { imported: fresh.length, duplicates: drafts.length - fresh.length };
+    }
+
+    function buildImageDraft(region, text, ocrConfidence) {
+      const parsed = parseImportText(text, 'image');
+      const draft = parsed[0] || blankDraft();
+      const confidence = Math.max(0, Math.min(1, Number(ocrConfidence || 0) / 100));
+      Object.assign(draft, {
+        source: 'image',
+        sourceRegionId: region.id,
+        region,
+        rawText: text,
+        ocrConfidence: confidence,
+        approved: true,
+        extractionsInRegion: parsed.length,
+      });
+      if (parsed.length > 1) {
+        draft.validationMessages = [`Regionen ga ${parsed.length} mulige kuponger og må deles manuelt.`];
+      }
+      validateImageDraft(draft);
+      if (draft.selections?.length > 1) {
+        draft.status = 'uncertain';
+        draft.validationMessages.push(`Kombinasjonskupong med ${draft.selections.length} delspill må kontrolleres manuelt.`);
+      }
+      if (parsed.length !== 1) {
+        draft.status = parsed.length ? 'uncertain' : 'rejected';
+        draft.validationMessages.push(parsed.length ? 'Flere økonomiblokker ble funnet i samme region.' : 'Ingen komplett økonomiblokk ble lest i regionen.');
+      }
+
+      const box = region.box;
+      draft.fields = {
+        match: tracedField(draft.match, cleanField(draft.match) || null, confidence, box),
+        market: tracedField(draft.market, cleanField(draft.market) || null, confidence, box),
+        selection: tracedField(draft.selection, cleanField(draft.selection) || null, confidence, box),
+        odds: tracedField(draft.odds, parseNumber(draft.odds) || null, confidence, box),
+        stake: tracedField(draft.stake, parseNumber(draft.stake) || null, confidence, box),
+        payout: tracedField(draft.payout, parseNumber(draft.payout) || null, confidence, box),
+        coupon: tracedField(draft.coupon, cleanField(draft.coupon) || null, confidence, box),
+        kickoff: tracedField(draft.kickoff, cleanField(draft.kickoff) || null, confidence, box),
+      };
+      return draft;
     }
 
     async function recognizeImages() {
@@ -1625,10 +2185,27 @@
       try {
         updateOcrProgress(0, 'Forbereder bildeutsnitt');
         const jobs = [];
+        const sourceImages = [];
+        const imageDiagnostics = [];
+        const seenHashes = new Set();
         for (let fileIndex = 0; fileIndex < importState.files.length; fileIndex += 1) {
-          const slices = await prepareOcrSlices(importState.files[fileIndex].file);
-          slices.forEach((slice) => jobs.push({ ...slice, fileIndex }));
+          const segmented = await ingestAndSegment(importState.files[fileIndex].file, fileIndex);
+          sourceImages.push(segmented.sourceImage);
+          if (seenHashes.has(segmented.sourceImage.sha256)) {
+            imageDiagnostics.push({ sourceImageId: segmented.sourceImage.id, status: 'duplicate', detectedRegions: segmented.regions.length });
+            continue;
+          }
+          seenHashes.add(segmented.sourceImage.sha256);
+          segmented.regions.forEach((region) => jobs.push({ region, fileIndex }));
+          imageDiagnostics.push({
+            sourceImageId: segmented.sourceImage.id,
+            status: segmented.regions.length ? 'segmented' : 'rejected',
+            columns: segmented.columnCount,
+            detectedRegions: segmented.regions.length,
+          });
         }
+
+        if (!jobs.length) throw new Error('Ingen kupongregioner ble oppdaget.');
 
         worker = await Tesseract.createWorker('nor+eng', 1, {
           logger: (message) => {
@@ -1641,18 +2218,58 @@
 
         for (let index = 0; index < jobs.length; index += 1) {
           const job = jobs[index];
-          const columnLabel = job.columns > 1 ? `, kolonne ${job.column}` : '';
-          updateOcrProgress(index / jobs.length, `Leser bilde ${job.fileIndex + 1}${columnLabel}`);
-          const result = await worker.recognize(job.image);
+          updateOcrProgress(index / jobs.length, `Leser bilde ${job.fileIndex + 1}, kupong ${index + 1} av ${jobs.length}`);
+          const result = await worker.recognize(job.region.ocrImage);
           const text = result.data.text || '';
-          recognized.push(text);
-          drafts.push(...parseImportText(text, 'image'));
+          recognized.push({ regionId: job.region.id, text });
+          drafts.push(buildImageDraft(job.region, text, result.data.confidence));
         }
 
-        importState.text = recognized.join('\n\n--- NYTT BILDE ---\n\n');
-        importState.drafts = drafts;
-        importState.step = 'review';
-        importState.error = drafts.length ? '' : 'Ingen komplette spill ble funnet. Legg til en rad og fyll inn feltene manuelt.';
+        const complete = drafts.filter((draft) => draft.status === 'complete').length;
+        const uncertain = drafts.filter((draft) => draft.status === 'uncertain').length;
+        const rejected = drafts.filter((draft) => draft.status === 'rejected').length;
+        importState.session = {
+          id: `session-${Date.now()}`,
+          createdAt: new Date().toISOString(),
+          sourceImages,
+          regions: jobs.map((job) => ({
+            id: job.region.id,
+            sourceImageId: job.region.sourceImageId,
+            box: job.region.box,
+            touchesImageEdge: job.region.touchesImageEdge,
+            column: job.region.column,
+          })),
+          coupons: drafts.map((draft) => ({
+            sourceRegionId: draft.sourceRegionId,
+            status: draft.status,
+            approved: draft.approved,
+            fields: draft.fields,
+            validationMessages: draft.validationMessages,
+          })),
+          diagnostics: {
+            images: imageDiagnostics,
+            detectedRegions: jobs.length,
+            analyzedCoupons: drafts.length,
+            completeCoupons: complete,
+            uncertainCoupons: uncertain,
+            rejectedCoupons: rejected,
+            failClosed: drafts.length !== jobs.length || uncertain > 0 || rejected > 0,
+          },
+        };
+        importState.text = recognized.map((item) => `[${item.regionId}]\n${item.text}`).join('\n\n--- NY REGION ---\n\n');
+        reconcileDraftContexts(drafts);
+
+        const automatic = drafts.filter((draft) => draft.status === 'complete');
+        const reviewRequired = drafts.filter((draft) => draft.status !== 'complete');
+        const result = importDraftCollection(automatic);
+
+        importState.lastScanDrafts = drafts;
+        importState.drafts = reviewRequired;
+        importState.step = reviewRequired.length ? 'review' : 'success';
+        importState.notice = `${result.imported} kuponger ble importert automatisk${result.duplicates ? `; ${result.duplicates} duplikater ble hoppet over` : ''}.`;
+        importState.error = reviewRequired.length
+          ? `${reviewRequired.length} kuponger krever kontroll fordi vesentlig informasjon mangler eller er inkonsistent.`
+          : '';
       } catch (error) {
         console.error(error);
         importState.error = 'Bildene kunne ikke leses. Prøv et tydeligere utsnitt, eller lim inn teksten.';
@@ -1665,46 +2282,33 @@
     }
 
     function commitDrafts() {
+      if (importState.session && importState.session.diagnostics.analyzedCoupons < importState.session.diagnostics.detectedRegions) {
+        importState.error = 'Import stoppet: ikke alle oppdagede regioner er analysert.';
+        render();
+        return;
+      }
+
+      reconcileDraftContexts(importState.drafts);
       const valid = importState.drafts.filter((draft) =>
-        cleanField(draft.match) && cleanField(draft.market) && cleanField(draft.selection) &&
+        draft.status === 'complete' &&
+        cleanField(draft.match) && cleanField(draft.selection) &&
         parseNumber(draft.odds) > 1 && parseNumber(draft.stake) > 0
       );
 
       if (!valid.length) {
-        importState.error = 'Kontroller kamp, spilltype, utfall, odds og innsats før du importerer.';
+        importState.error = 'Ingen kuponger er klare. Korriger bare feltene som er markert som vesentlige.';
         render();
         return;
       }
 
-      const knownCoupons = new Set(ALL_BETS.map((bet) => bet.coupon).filter(Boolean));
-      const fresh = valid.filter((draft) => !draft.coupon || !knownCoupons.has(draft.coupon));
+      const result = importDraftCollection(valid);
+      importState.drafts = importState.drafts.filter((draft) => !valid.includes(draft));
 
-      if (!fresh.length) {
-        importState.error = 'Disse kupongnumrene er allerede importert.';
-        render();
-        return;
+      if (!importState.drafts.length) {
+        resetImportState();
+      } else {
+        importState.error = `${result.imported} kuponger importert. ${importState.drafts.length} krever fortsatt kontroll.`;
       }
-
-      fresh.forEach((draft, index) => {
-        const odds = parseNumber(draft.odds);
-        const stake = parseNumber(draft.stake);
-        const payout = parseNumber(draft.payout) || odds * stake;
-        ALL_BETS.push({
-          id: `import-${Date.now()}-${index}`,
-          matchId: ensureMatch(draft.match, draft.kickoff),
-          market: cleanField(draft.market),
-          selection: cleanField(draft.selection),
-          odds,
-          stake,
-          payout,
-          category: draft.category === 'match' ? inferCategory(draft.market) : (CAT[draft.category] ? draft.category : inferCategory(draft.market)),
-          coupon: cleanField(draft.coupon),
-          imported: true,
-        });
-      });
-
-      saveImports();
-      resetImportState();
       render();
     }
 
@@ -1735,6 +2339,8 @@
     function renderImportModal() {
       if (!importState.open) return '';
       const isReview = importState.step === 'review';
+      const isSuccess = importState.step === 'success';
+      const isAudit = importState.step === 'audit';
 
       const source = importState.mode === 'text'
         ? `<div class="import-source">
@@ -1752,39 +2358,77 @@
             ${importState.busy || importState.status ? `<div class="ocr-status"><span>${esc(importState.status || 'Klar')}</span><div class="ocr-track"><i style="--progress:${Math.round(importState.progress * 100)}%"></i></div></div>` : ''}
           </div>`;
 
-      const review = `<div class="review-list">
+      const diagnostics = importState.session?.diagnostics;
+      const diagnosticSummary = diagnostics ? `<div class="import-diagnostics" aria-label="Importdiagnostikk">
+        <div><span>Regioner</span><strong>${diagnostics.detectedRegions}</strong></div>
+        <div><span>Analysert</span><strong>${diagnostics.analyzedCoupons}</strong></div>
+        <div><span>Komplette</span><strong>${diagnostics.completeCoupons}</strong></div>
+        <div><span>Usikre</span><strong>${diagnostics.uncertainCoupons}</strong></div>
+        <div><span>Avviste</span><strong>${diagnostics.rejectedCoupons}</strong></div>
+      </div>` : '';
+      const review = `${diagnosticSummary}<div class="review-list">
         ${importState.drafts.length ? importState.drafts.map((draft, index) => `
-          <article class="review-row" style="--cat:${CAT[draft.category]?.color || CAT.match.color}">
-            <button class="remove-draft" type="button" data-remove-draft="${index}" aria-label="Fjern spill">×</button>
+          <article class="review-row ${draft.region ? 'has-source' : ''} is-${draft.status || 'complete'}" style="--cat:${CAT[draft.category]?.color || CAT.match.color}">
+            ${draft.source !== 'image' ? `<button class="remove-draft" type="button" data-remove-draft="${index}" aria-label="Fjern spill">×</button>` : ''}
+            <div class="review-summary">
+              <strong>Kupong ${index + 1}</strong>
+              <span class="${draft.status || 'complete'}">${draft.status === 'rejected' ? 'Avvist' : (draft.status === 'uncertain' ? 'Usikker' : 'Komplett')}</span>
+              ${draft.ocrConfidence !== undefined ? `<span>OCR ${Math.round(draft.ocrConfidence * 100)} %</span>` : ''}
+              ${draft.source === 'image' ? `<span class="${draft.status === 'complete' ? 'complete' : 'uncertain'}">${draft.status === 'complete' ? 'Importeres automatisk' : 'Krever kontroll'}</span>` : ''}
+            </div>
+            ${draft.region ? `<div class="review-source"><img src="${draft.region.previewUrl}" alt="Kildeutsnitt for kupong ${index + 1}"><small>x ${draft.region.box.x}, y ${draft.region.box.y}<br>${draft.region.box.width} × ${draft.region.box.height} px</small></div>` : ''}
             <div class="review-field"><label for="draft-match-${index}">Kamp</label><input id="draft-match-${index}" data-draft="${index}" data-field="match" value="${esc(draft.match)}"></div>
             <div class="review-field"><label for="draft-market-${index}">Spilltype</label><input id="draft-market-${index}" data-draft="${index}" data-field="market" value="${esc(draft.market)}"></div>
             <div class="review-field"><label for="draft-selection-${index}">Utfall</label><input id="draft-selection-${index}" data-draft="${index}" data-field="selection" value="${esc(draft.selection)}"></div>
             <div class="review-field"><label for="draft-odds-${index}">Odds</label><input id="draft-odds-${index}" inputmode="decimal" data-draft="${index}" data-field="odds" value="${esc(draft.odds)}"></div>
             <div class="review-field"><label for="draft-stake-${index}">Innsats</label><input id="draft-stake-${index}" inputmode="decimal" data-draft="${index}" data-field="stake" value="${esc(draft.stake)}"></div>
             <div class="review-field"><label for="draft-payout-${index}">Mulig premie</label><input id="draft-payout-${index}" inputmode="decimal" data-draft="${index}" data-field="payout" value="${esc(draft.payout)}"></div>
+            <div class="review-field"><label for="draft-coupon-${index}">Kupongnummer</label><input id="draft-coupon-${index}" data-draft="${index}" data-field="coupon" value="${esc(draft.coupon)}"></div>
+            <div class="review-field"><label for="draft-kickoff-${index}">Kampstart</label><input id="draft-kickoff-${index}" data-draft="${index}" data-field="kickoff" value="${esc(draft.kickoff)}"></div>
             <div class="review-field"><label for="draft-category-${index}">Kategori</label><select id="draft-category-${index}" data-draft="${index}" data-field="category">${Object.entries(CAT).map(([key, cat]) => `<option value="${key}" ${draft.category === key ? 'selected' : ''}>${cat.label}</option>`).join('')}</select></div>
+            ${draft.validationMessages?.length ? `<p class="review-messages">${draft.validationMessages.map(esc).join('<br>')}</p>` : ''}
           </article>
         `).join('') : '<div class="import-empty">Ingen spill funnet ennå.</div>'}
+      </div>`;
+
+      const audit = `<div class="scan-audit">
+        ${importState.lastScanDrafts.length ? importState.lastScanDrafts.map((draft, index) => `
+          <article class="scan-audit-row">
+            ${draft.region?.previewUrl ? `<img src="${draft.region.previewUrl}" alt="Kildeutsnitt for kupong ${index + 1}">` : '<div></div>'}
+            <div class="scan-audit-data">
+              <div><span>Kamp</span><strong>${esc(draft.match || 'Ikke lest')}</strong></div>
+              <div><span>Spilltype</span><strong>${esc(draft.market || 'Ikke oppgitt')}</strong></div>
+              <div><span>Spill</span><strong>${esc(draft.selection || 'Ikke lest')}</strong></div>
+              <div><span>Odds</span><strong>${esc(draft.odds || '—')}</strong></div>
+              <div><span>Innsats</span><strong>${esc(draft.stake || '—')}</strong></div>
+              <div><span>Mulig premie</span><strong>${esc(draft.payout || '—')}</strong></div>
+              <div><span>Kampstart</span><strong>${esc(draft.kickoff || 'Ikke oppgitt')}</strong></div>
+              <div><span>Status</span><strong>${draft.status === 'complete' ? 'Importert automatisk' : 'Krever kontroll'}</strong></div>
+            </div>
+          </article>`).join('') : '<div class="import-empty">Ingen innlesning tilgjengelig.</div>'}
       </div>`;
 
       return `<div class="import-backdrop" role="dialog" aria-modal="true" aria-labelledby="import-title">
         <section class="import-panel">
           <header class="import-head">
-            <div><span>${isReview ? 'Kontroller før lagring' : 'Ny kupongimport'}</span><h2 id="import-title">${isReview ? `${importState.drafts.length} spill funnet` : 'Importer spill'}</h2></div>
+            <div><span>${isReview ? 'Kontroller før lagring' : (isAudit ? 'Innsyn i bildelesing' : (isSuccess ? 'Import fullført' : 'Ny kupongimport'))}</span><h2 id="import-title">${isReview ? `${importState.drafts.length} kuponger krever kontroll` : (isAudit ? 'Dette ble lest fra bildene' : (isSuccess ? 'Kupongene er lagt til' : 'Importer spill'))}</h2></div>
             <button class="import-close" type="button" aria-label="Lukk">×</button>
           </header>
           <div class="import-body">
-            ${isReview ? review : `<div class="import-modes" role="tablist">
-              <button type="button" class="${importState.mode === 'text' ? 'is-active' : ''}" data-import-mode="text">Lim inn tekst</button>
-              <button type="button" class="${importState.mode === 'image' ? 'is-active' : ''}" data-import-mode="image">Skjermbilder</button>
-            </div>${source}`}
+            ${isAudit ? audit : (isReview ? review : (isSuccess ? '<div class="import-empty">Importen er fullført. Du kan kontrollere hva som ble lest fra bildene før du lukker.</div>' : `<div class="import-modes" role="tablist">
+              <button type="button" class="${importState.mode === 'image' ? 'is-active' : ''}" data-import-mode="image">Bildeimport</button>
+              <button type="button" class="${importState.mode === 'text' ? 'is-active' : ''}" data-import-mode="text">Tekstimport</button>
+            </div>${source}`))}
+            ${importState.notice ? `<p class="import-notice">${esc(importState.notice)}</p>` : ''}
             ${importState.error ? `<p class="import-error">${esc(importState.error)}</p>` : ''}
           </div>
           <footer class="import-actions">
-            <div>${isReview ? '<button type="button" class="import-back">Tilbake</button><button type="button" class="add-draft">Legg til rad</button>' : '<button type="button" class="import-cancel">Avbryt</button><button type="button" class="manual-import">Registrer manuelt</button>'}</div>
-            <div>${isReview
-              ? `<button type="button" class="primary-action commit-import">Legg til ${importState.drafts.length} spill</button>`
-              : `<button type="button" class="primary-action parse-import" ${importState.busy ? 'disabled' : ''}>${importState.mode === 'image' ? (importState.busy ? 'Leser bilder' : 'Les bilder') : 'Finn spill'}</button>`
+            <div>${isAudit ? '<button type="button" class="audit-back">Tilbake</button>' : (isSuccess ? '<button type="button" class="show-scan-audit">Se innlesning</button>' : (isReview ? `<button type="button" class="import-back">Tilbake</button><button type="button" class="add-draft">Legg til rad</button>${importState.lastScanDrafts.length ? '<button type="button" class="show-scan-audit">Se innlesning</button>' : ''}` : '<button type="button" class="import-cancel">Avbryt</button><button type="button" class="manual-import">Registrer manuelt</button>'))}</div>
+            <div>${isAudit || isSuccess
+              ? '<button type="button" class="primary-action import-done">Ferdig</button>'
+              : (isReview
+                ? `<button type="button" class="primary-action commit-import">Legg til korrigerte</button>`
+                : `<button type="button" class="primary-action parse-import" ${importState.busy ? 'disabled' : ''}>${importState.mode === 'image' ? (importState.busy ? 'Leser bilder' : 'Les bilder') : 'Finn spill'}</button>`)
             }</div>
           </footer>
         </section>
@@ -1914,12 +2558,14 @@
                   return `<button class="${className}" aria-pressed="${active}" data-sort="${option.key}">${option.label}${suffix ? ` <small>${suffix}</small>` : ''}</button>`;
                 }).join('')}
               </div>
+              <div class="bet-header" aria-hidden="true"><span>Flytt</span><span>Velg</span><span>Type</span><span>Spill</span><span>Odds</span><span>Innsats</span><span>Mulig premie</span></div>
               <div>
                 ${visible.map((bet) => {
                   const cat = CAT[bet.category] || CAT.match;
                   return `
-                    <article class="bet ${tier(bet.odds)} ${selectedBetIds.has(bet.id) ? 'selected' : ''}" style="--cat:${cat.color}">
+                    <article class="bet ${tier(bet.odds)} ${selectedBetIds.has(bet.id) ? 'selected' : ''}" style="--cat:${cat.color}" draggable="true" data-drag-bet="${esc(bet.id)}" data-drag-match="${esc(match.id)}">
                       <button type="button" class="delete-bet" data-delete-bet="${esc(bet.id)}" aria-label="Slett ${esc(bet.market)}: ${esc(bet.selection)}" title="Slett kupong">×</button>
+                      <div class="drag-handle" title="Dra for å endre rekkefølge" aria-label="Dra for å endre rekkefølge">⋮⋮</div>
                       <div class="select-bet">
                         <input id="bet-${esc(bet.id)}" type="checkbox" data-bet="${esc(bet.id)}" ${selectedBetIds.has(bet.id) ? 'checked' : ''}>
                         <label for="bet-${esc(bet.id)}">
@@ -1957,7 +2603,9 @@
       document.querySelectorAll('.import-trigger, .empty-import').forEach((button) => {
         button.addEventListener('click', () => {
           importState.open = true;
+          importState.mode = 'image';
           importState.error = '';
+          importState.notice = null;
           render();
         });
       });
@@ -2050,7 +2698,13 @@
         });
         field.addEventListener('change', () => {
           const draft = importState.drafts[Number(field.dataset.draft)];
-          if (draft) draft[field.dataset.field] = field.value;
+          if (draft) {
+            draft[field.dataset.field] = field.value;
+            if (draft.source === 'image') {
+              validateImageDraft(draft);
+              render();
+            }
+          }
         });
       });
 
@@ -2062,6 +2716,79 @@
       });
 
       document.querySelector('.commit-import')?.addEventListener('click', commitDrafts);
+
+      document.querySelector('.export-diagnostics')?.addEventListener('click', () => {
+        if (!importState.session) return;
+        const report = {
+          ...importState.session,
+          coupons: importState.drafts.map((draft) => ({
+            sourceRegionId: draft.sourceRegionId || null,
+            status: draft.status || 'complete',
+            approved: Boolean(draft.approved),
+            fields: draft.fields || null,
+            validationMessages: draft.validationMessages || [],
+            rawText: draft.rawText || '',
+          })),
+        };
+        const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' }));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${importState.session.id}-diagnostikk.json`;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+
+
+      document.querySelector('.import-done')?.addEventListener('click', () => {
+        resetImportState();
+        render();
+      });
+
+      document.querySelector('.show-scan-audit')?.addEventListener('click', () => {
+        importState.step = 'audit';
+        render();
+      });
+
+      document.querySelector('.audit-back')?.addEventListener('click', () => {
+        importState.step = importState.drafts.length ? 'review' : 'success';
+        render();
+      });
+
+      document.querySelectorAll('[data-drag-bet]').forEach((row) => {
+        row.addEventListener('dragstart', (event) => {
+          draggedBetId = row.dataset.dragBet;
+          row.classList.add('is-dragging');
+          event.dataTransfer.effectAllowed = 'move';
+          event.dataTransfer.setData('text/plain', draggedBetId);
+        });
+        row.addEventListener('dragend', () => {
+          draggedBetId = null;
+          document.querySelectorAll('.bet').forEach((item) => item.classList.remove('is-dragging', 'drag-over'));
+        });
+        row.addEventListener('dragover', (event) => {
+          if (!draggedBetId || draggedBetId === row.dataset.dragBet) return;
+          const dragged = ALL_BETS.find((bet) => bet.id === draggedBetId);
+          const target = ALL_BETS.find((bet) => bet.id === row.dataset.dragBet);
+          if (!dragged || !target || dragged.matchId !== target.matchId) return;
+          event.preventDefault();
+          row.classList.add('drag-over');
+        });
+        row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+        row.addEventListener('drop', (event) => {
+          event.preventDefault();
+          row.classList.remove('drag-over');
+          const fromIndex = ALL_BETS.findIndex((bet) => bet.id === draggedBetId);
+          const toIndex = ALL_BETS.findIndex((bet) => bet.id === row.dataset.dragBet);
+          if (fromIndex < 0 || toIndex < 0 || fromIndex === toIndex) return;
+          const [moved] = ALL_BETS.splice(fromIndex, 1);
+          const adjustedIndex = fromIndex < toIndex ? toIndex - 1 : toIndex;
+          ALL_BETS.splice(adjustedIndex, 0, moved);
+          sortState.key = 'default';
+          sortState.direction = 'desc';
+          saveImports();
+          render();
+        });
+      });
 
       document.querySelectorAll('[data-delete-bet]').forEach((button) => {
         button.addEventListener('click', () => {
@@ -2149,7 +2876,51 @@
       }
     });
 
-    window.__oddsenImport = { parseImportText, parseNumber, inferCategory };
+    function runImportSelfTests() {
+      const results = [];
+      const check = (name, condition, details = '') => results.push({ name, passed: Boolean(condition), details });
+      const receipt = (index, match = 'Norge v England') => `innsats: 100,00\nOdds: 2.10, Mulig Premie: 210,00\n1. ${match}\nStarttid: Lør. 11/7 23:00\nKonkurranse: Fotball-VM\nSpillobjekt: Scorer mål\nSpilt utfall: Erling Haaland\nLevert: 10.07.2026\nKupongnummer: ${index}.1`;
+      const single = parseImportText(receipt(1));
+      check('én kupong i tekst', single.length === 1);
+      check('økonomifelt normaliseres', single[0]?.stake === 100 && single[0]?.odds === 2.1 && single[0]?.payout === 210);
+      check('kampstart skilles fra leveringstid', single[0]?.kickoff === 'Lør. 11/7 23:00');
+      check('spillobjekt og utfall holdes adskilt', single[0]?.market === 'Scorer mål' && single[0]?.selection === 'Erling Haaland');
+
+      const ten = parseImportText(Array.from({ length: 10 }, (_, index) => receipt(index + 10, index < 7 ? 'Spania v Belgia' : 'Norge v England')).join('\n\n'));
+      check('10 kuponger i tekst', ten.length === 10, `fant ${ten.length}`);
+      check('flere kamper beholdes', new Set(ten.map((item) => item.match)).size === 2);
+
+      const combo = parseImportText(`innsats: 100,00\nOdds: 6.00, Mulig Premie: 600,00\n1. Norge v England\nStarttid: Lør. 11/7 23:00\nSpillobjekt: HUB\nSpilt utfall: Norge 3.00\n2. Spania v Belgia\nStarttid: Fre. 10/7 21:00\nSpillobjekt: Begge lag scorer\nSpilt utfall: Ja 2.00\nKupongnummer: 99.1`);
+      check('kombinasjonskupong får to delspill', combo[0]?.selections?.length === 2, `fant ${combo[0]?.selections?.length || 0}`);
+
+      const conflicting = validateImageDraft({
+        ...single[0],
+        payout: 999,
+        region: { touchesImageEdge: false },
+      });
+      check('økonomiavvik stoppes', conflicting.status === 'uncertain' && conflicting.validationMessages.some((message) => message.includes('Økonomiavvik')));
+      check('komma og punktum normaliseres', parseNumber('1 825,00 kr') === 1825 && parseNumber('3.65') === 3.65);
+      return { passed: results.every((result) => result.passed), results };
+    }
+
+    window.__oddsenImport = {
+      parseImportText,
+      parseNumber,
+      inferCategory,
+      ingestAndSegment,
+      validateImageDraft,
+      diagnostics: () => importState.session,
+      runImportSelfTests,
+    };
+
+    if (new URLSearchParams(location.search).has('selftest')) {
+      const report = runImportSelfTests();
+      const output = document.createElement('pre');
+      output.id = 'self-test-results';
+      output.style.cssText = 'position:relative;z-index:50;margin:16px;padding:16px;background:#fff;color:#111;white-space:pre-wrap';
+      output.textContent = JSON.stringify(report, null, 2);
+      document.body.prepend(output);
+    }
   </script>
 </body>
 </html>
